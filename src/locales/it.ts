@@ -1,5 +1,5 @@
 export const itTranslations = {
-  appName: "CASARI EAT 'N' GO",
+  appName: 'HUEAT',
   fieldIsRequired: 'Il campo é obbligatorio',
   notFoundTitle: 'Hai trovato un posto segreto',
   notFoundDescription:

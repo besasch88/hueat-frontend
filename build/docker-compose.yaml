@@ -1,5 +1,5 @@
 services:
-  ceng-frontend:
+  hueat-frontend:
     build:
       context: ../
       dockerfile: build/docker-webapp
