@@ -1,8 +1,7 @@
 import { Menu } from '@entities/menu';
-import { Target } from './targetDto';
 
 export type GetMenuInputDto = {
-  target: Target;
+  tableID: string;
 };
 
 export type GetMenuOutputDto = {

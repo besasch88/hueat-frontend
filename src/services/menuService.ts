@@ -4,7 +4,7 @@ import { callAuthApi } from './authApi';
 
 export const menuService = {
   async getMenu(input: GetMenuInputDto): Promise<GetMenuOutputDto> {
-    const response = await callAuthApi(`/api/v1/menu`, Method.GET, input);
+    const response = await callAuthApi(`/api/v1/tables/${input.tableID}/menu`, Method.GET);
     if (!response) {
       throw new Error('menu-get-failed');
     }

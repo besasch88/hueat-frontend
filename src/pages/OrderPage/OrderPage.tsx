@@ -70,7 +70,7 @@ export function OrderPage() {
         const tableData = await tableService.getTable({ id: tableId });
         setTable(tableData.item);
         // Retrieve Menu
-        const menuData = await menuService.getMenu({ target: target });
+        const menuData = await menuService.getMenu({ tableID: tableId });
         setMenu(menuData.item);
         setCategories(menuData.item.categories);
         setCurrentCategory(menuData.item.categories[0]);
