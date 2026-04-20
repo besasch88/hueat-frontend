@@ -44,12 +44,12 @@ export const sendSuccessNotification = ({ id, title, message, icon }: sendNotifi
     autoClose: 5000,
     title: title,
     message: message,
-    color: 'teal',
+    color: 'primary',
     styles: {
       root: {
         borderWidth: 2,
-        borderColor: 'teal',
-        backgroundColor: 'var(--mantine-color-teal-0)',
+        borderColor: 'primary',
+        backgroundColor: 'var(--mantine-primary-color-0)',
       },
       title: {
         color: 'var(--mantine-color-text)',

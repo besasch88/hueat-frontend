@@ -104,7 +104,7 @@ export function StatisticsPage() {
                 justify="space-between"
                 variant="default"
                 color="var(--aimm-bg-paper)"
-                bg={'var(--mantine-color-blue-0)'}
+                bg={'var(--mantine-primary-color-0)'}
                 bd={'1px solid var(--mantine-color-dark-1)'}
                 c="var(--mantine-color-text)"
                 fz={15}
@@ -125,7 +125,7 @@ export function StatisticsPage() {
                 justify="space-between"
                 variant="default"
                 color="var(--aimm-bg-paper)"
-                bg={'var(--mantine-color-blue-0)'}
+                bg={'var(--mantine-primary-color-0)'}
                 bd={'1px solid var(--mantine-color-dark-1)'}
                 c="var(--mantine-color-text)"
                 fz={15}

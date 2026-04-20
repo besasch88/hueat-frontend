@@ -23,7 +23,7 @@ export function NotFoundPage() {
           {t('notFoundDescription')}
         </Text>
         <Group justify="center">
-          <Button variant="white" size="md" color="indigo" onClick={onClickHandler}>
+          <Button variant="white" size="md" color="primary" onClick={onClickHandler}>
             {t('notFoundButton')}
           </Button>
         </Group>

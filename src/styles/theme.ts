@@ -18,8 +18,8 @@ export const mantineTheme: MantineThemeOverride = createTheme({
     red: ['#FFDCE1', '#FFB3B7', '#FF8990', '#FF6068', '#FF3641', '#FF0C1A', '#E6001B', '#CC001C', '#BA0024', '#9A001F'],
   },
   other: {
-    darkBackground: 'rgb(16, 91, 157)',
-    lightBackground: 'rgb(16, 91, 157)',
+    darkBackground: 'var(--mantine-primary-color-9)',
+    lightBackground: 'var(--mantine-primary-color-9)',
     bpPaperDark: '#dee2e6',
     bpPaperLight: '#dee2e6',
   },
@@ -28,7 +28,7 @@ export const mantineTheme: MantineThemeOverride = createTheme({
     lg: '0px 2px 5px rgba(0, 0, 0, .10)',
     xl: '0px 2px 5px rgba(0, 0, 0, .10)',
   },
-  primaryColor: 'blue',
+  primaryColor: 'teal',
   defaultRadius: 'md',
   components: {
     Drawer: {
@@ -130,7 +130,8 @@ export const mantineTheme: MantineThemeOverride = createTheme({
       defaultProps: {
         p: 'md',
         h: 60,
-        bg: 'var(--mantine-color-blue-3)',
+        bg: 'var(--mantine-primary-color-6)',
+        c: 'var(--mantine-color-white)',
       },
     },
     ModalTitle: {
@@ -152,10 +153,12 @@ export const mantineTheme: MantineThemeOverride = createTheme({
       styles: () => ({
         root: {
           backgroundColor: 'var(--mantine-color-white)',
-          border: '1px solid var(--mantine-color-blue-3)',
+          border: '1px solid var(--mantine-primary-color-6)',
+          c: 'var(--mantine-color-white)',
         },
         indicator: {
-          backgroundColor: 'var(--mantine-color-blue-3)',
+          backgroundColor: 'var(--mantine-primary-color-6)',
+          c: 'var(--mantine-color-white)',
         },
       }),
     },
@@ -182,12 +185,12 @@ export const mantineTheme: MantineThemeOverride = createTheme({
 export const cssVariablesResolver: CSSVariablesResolver = (theme) => ({
   variables: {},
   light: {
-    '--aimm-svg-color': theme.colors.blue[7],
+    '--aimm-svg-color': 'var(--mantine-primary-color-6)',
     '--aimm-bg-paper': theme.other.bpPaperLight,
     '--aimm-background': theme.other.lightBackground,
   },
   dark: {
-    '--aimm-svg-color': theme.colors.blue[7],
+    '--aimm-svg-color': 'var(--mantine-primary-color-6)',
     '--aimm-bg-paper': theme.other.bpPaperDark,
     '--aimm-background': theme.other.darkBackground,
   },
