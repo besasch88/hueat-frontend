@@ -83,6 +83,10 @@ export const itTranslations = {
   paymentStatistics: 'PAGAMENTI',
   timeStatistics: 'TEMPISTICHE',
   timeTable: 'TEMPO ROTAZIONE TAVOLO',
+  dangerZone: 'ZONA PERICOLOSA',
+  dangerZoneDescription:
+    'Attenzione! Questa azione è irreversibile ed eliminerà tutti i tavoli e asporti chiusi, insieme a tutte le statistiche raccolte fino ad ora.',
+  deleteStatisticsButton: 'ELIMINA TUTTE LE STATISTICHE',
   menuMoveUp: 'SPOSTA SU',
   menuMoveDown: 'SPOSTA GIÙ',
   menuEdit: 'MODIFICA',

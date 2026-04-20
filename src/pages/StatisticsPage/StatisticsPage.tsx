@@ -4,6 +4,7 @@ import { Statistics } from '@entities/statistics';
 import { AuthGuard } from '@guards/AuthGuard';
 import { Button, Divider, Grid, Group, Loader, Text, Title } from '@mantine/core';
 import { statisticsService } from '@services/statisticsService';
+import { IconTrash } from '@tabler/icons-react';
 import { getErrorMessage } from '@utils/errUtils';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -104,7 +105,7 @@ export function StatisticsPage() {
                 justify="space-between"
                 variant="default"
                 color="var(--aimm-bg-paper)"
-                bg={'var(--mantine-color-red-0)'}
+                bg={'var(--mantine-color-orange-1)'}
                 bd={'1px solid var(--mantine-color-dark-1)'}
                 c="var(--mantine-color-text)"
                 fz={15}
@@ -125,7 +126,7 @@ export function StatisticsPage() {
                 justify="space-between"
                 variant="default"
                 color="var(--aimm-bg-paper)"
-                bg={'var(--mantine-primary-color-0)'}
+                bg={'var(--mantine-color-gray-1)'}
                 bd={'1px solid var(--mantine-color-dark-1)'}
                 c="var(--mantine-color-text)"
                 fz={15}
@@ -148,7 +149,7 @@ export function StatisticsPage() {
                   justify="space-between"
                   variant="default"
                   color="var(--aimm-bg-paper)"
-                  bg={index % 2 == 0 ? 'var(--mantine-color-gray-2)' : 'var(--mantine-color-gray-1)'}
+                  bg={index % 2 == 0 ? 'var(--mantine-color-gray-3)' : 'var(--mantine-color-gray-1)'}
                   bd={'1px solid var(--mantine-color-dark-1)'}
                   c="var(--mantine-color-text)"
                   fz={15}
@@ -160,6 +161,30 @@ export function StatisticsPage() {
                   }
                 ></Button>
               ))}
+            </Grid.Col>
+            <Grid.Col span={12}>
+              <hr />
+            </Grid.Col>
+            <Grid.Col span={12}>
+              <Title order={4} mb={10} c="var(--mantine-color-red-7)">
+                {t('dangerZone').toUpperCase()}
+              </Title>
+              <Text c={'var(--mantine-color-text)'}>{t('dangerZoneDescription')}</Text>
+              <Button
+                key={`deleteStatistics`}
+                fullWidth
+                px={15}
+                mt={15}
+                mb={10}
+                size="lg"
+                variant="default"
+                bg={'var(--mantine-color-red-6)'}
+                c="var(--mantine-color-white)"
+                fz={15}
+                leftSection={<IconTrash color="white" />}
+              >
+                {t('deleteStatisticsButton')}
+              </Button>
             </Grid.Col>
           </>
         )}
