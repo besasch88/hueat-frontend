@@ -38,7 +38,10 @@ export function TakeawayListPage() {
         const takeawayData = await tableService.listTables({ target: Target.outside, includeClosed: true });
         setTakeaways(takeawayData.items);
         if (takeawayData.items.length > 0) {
-          setLastTakeawayNumber(+takeawayData.items[0].name.split('ASPORTO ')[1]);
+          const numbers = takeawayData.items
+            .map((item) => +item.name.split('ASPORTO ')[1])
+            .filter((num) => !isNaN(num));
+          setLastTakeawayNumber(numbers.length > 0 ? Math.max(...numbers) : 0);
         }
       } catch (err: unknown) {
         switch (getErrorMessage(err)) {
