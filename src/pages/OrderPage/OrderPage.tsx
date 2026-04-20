@@ -364,7 +364,7 @@ export function OrderPage() {
         note: note,
       });
     } else {
-      updatedCourse.items[index].note = note;
+      updatedCourse.items[index].note = note || undefined;
     }
     setCurrentCourse(updatedCourse);
     const updatedOrder = { ...o };
@@ -390,7 +390,7 @@ export function OrderPage() {
         note: note,
       });
     } else {
-      updatedCourse.items[index].note = note;
+      updatedCourse.items[index].note = note || undefined;
     }
     setCurrentCourse(updatedCourse);
     const updatedOrder = { ...o };

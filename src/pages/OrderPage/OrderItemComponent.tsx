@@ -2,7 +2,7 @@ import { MenuItem } from '@entities/menuItem';
 import { MenuOption } from '@entities/menuOption';
 import { OrderCourse } from '@entities/orderCourse';
 import { Badge, Button, TextInput } from '@mantine/core';
-import { useLongPress } from '@mantine/hooks';
+import { useDebouncedValue, useLongPress } from '@mantine/hooks';
 import { IconChevronDown, IconChevronUp, IconMinus, IconPlus } from '@tabler/icons-react';
 import { forwardRef, useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -95,6 +95,20 @@ function OrderItemComponentFunc(
 
   const [isExpanded, setExpanded] = useState(false);
 
+  const [localNote, setLocalNote] = useState(() => getOrderItemNote());
+  const [debouncedNote] = useDebouncedValue(localNote, 300);
+
+  useEffect(() => {
+    setLocalNote(getOrderItemNote());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [orderCourse, menuItem.id]); // intentional: reset only when switching items, not on every orderCourse update
+
+  useEffect(() => {
+    if (debouncedNote === getOrderItemNote()) return;
+    onItemNoteChange(menuItem.id, debouncedNote);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [debouncedNote]); // intentional: menuItem.id in closure is current at debounce settle time
+
   return (
     (menuItem.active || getOrderItem()) && (
       <>
@@ -156,10 +170,8 @@ function OrderItemComponentFunc(
                   },
                 }}
                 placeholder={t('notePlaceholder')}
-                value={getOrderItemNote()}
-                onChange={(e) => {
-                  onItemNoteChange(menuItem.id, e.currentTarget.value.toUpperCase());
-                }}
+                value={localNote}
+                onChange={(e) => setLocalNote(e.currentTarget.value.toUpperCase())}
               />
             )}
           </>
