@@ -4,6 +4,7 @@ export type MenuItem = {
   id: string;
   menuCategoryId: string;
   title: string;
+  titleDisplay: string;
   position: number;
   active: boolean;
   inside: boolean;

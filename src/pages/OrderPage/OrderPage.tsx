@@ -411,7 +411,7 @@ export function OrderPage() {
                 onChange={(value) => setCurrentCategory(getCategoryById(menu, value))}
                 data={categories.map((c) => {
                   return {
-                    label: c.title,
+                    label: c.titleDisplay,
                     value: c.id,
                   };
                 })}

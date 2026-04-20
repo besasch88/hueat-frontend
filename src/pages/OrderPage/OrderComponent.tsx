@@ -64,13 +64,6 @@ function OrderComponentFunc(
     return item.quantity;
   };
 
-  const calculateOptionTitle = (o: MenuOption, i: MenuItem) => {
-    if (o.title !== i.title && o.title.startsWith(i.title)) {
-      return o.title.slice(i.title.length).trim();
-    }
-    return o.title;
-  };
-
   useEffect(() => {
     if (expandedItem?.id !== menuItem.id) {
       setExpanded(false);
@@ -121,7 +114,7 @@ function OrderComponentFunc(
             fz={15}
             fw={600}
           >
-            {menuItem.title}
+            {menuItem.titleDisplay}
             {getOrderItemQuantity() > 0 && (
               <Badge ml={10} size="lg" color="red" variant="outline" circle>
                 {getOrderItemQuantity()}
@@ -151,7 +144,7 @@ function OrderComponentFunc(
                 setExpanded(!isExpanded);
               }}
             >
-              {menuItem.title}
+              {menuItem.titleDisplay}
               {!isExpanded && getOrderItemTotalQuantity(menuItem.id) > 0 && (
                 <Badge ml={10} size="lg" color="red" variant="outline" circle>
                   {getOrderItemTotalQuantity(menuItem.id)}
@@ -209,7 +202,7 @@ function OrderComponentFunc(
                     fz={15}
                     fw={300}
                   >
-                    {calculateOptionTitle(option, menuItem)}
+                    {option.titleDisplay}
                     {getOrderItemByOptionQuantity(option) > 0 && (
                       <Badge ml={10} size="lg" color="red" variant="outline" circle>
                         {getOrderItemByOptionQuantity(option)}

@@ -2,6 +2,7 @@ export type MenuOption = {
   id: string;
   menuItemId: string;
   title: string;
+  titleDisplay: string;
   position: number;
   active: boolean;
   inside: boolean;
