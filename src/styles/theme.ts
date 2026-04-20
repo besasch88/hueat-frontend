@@ -134,6 +134,11 @@ export const mantineTheme: MantineThemeOverride = createTheme({
         c: 'var(--mantine-color-white)',
       },
     },
+    ModalCloseButton: {
+      defaultProps: {
+        c: 'var(--mantine-color-white)',
+      },
+    },
     ModalTitle: {
       defaultProps: {
         fz: 20,
@@ -154,7 +159,6 @@ export const mantineTheme: MantineThemeOverride = createTheme({
         root: {
           backgroundColor: 'var(--mantine-color-white)',
           border: '1px solid var(--mantine-primary-color-6)',
-          c: 'var(--mantine-color-white)',
         },
         indicator: {
           backgroundColor: 'var(--mantine-primary-color-6)',

@@ -9,7 +9,7 @@ export interface TakeawayListComponentProps {
 
 export function TakeawayListComponent({ takeaway, onClick }: TakeawayListComponentProps) {
   const progressIcon = () => <IconProgress size={22} color="orange" />;
-  const completedIcon = () => <IconCircleCheck size={22} color="green" />;
+  const completedIcon = () => <IconCircleCheck size={22} color="teal" />;
 
   return (
     <Button

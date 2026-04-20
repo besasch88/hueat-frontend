@@ -392,7 +392,7 @@ export function OrderPage() {
 
             {table.close && (
               <Grid.Col span={12}>
-                <Alert variant="filled" color="green" ta={'center'}>
+                <Alert variant="filled" color="var(--mantine-primary-color-6)" ta={'center'}>
                   <Text fz={20}>
                     {t(table.paymentMethod || '')}: <b>{orderFinalPrice(order, menu).toFixed(2)}€</b>
                   </Text>
