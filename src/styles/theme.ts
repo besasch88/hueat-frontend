@@ -130,7 +130,7 @@ export const mantineTheme: MantineThemeOverride = createTheme({
       defaultProps: {
         p: 'md',
         h: 60,
-        bg: 'var(--mantine-primary-color-6)',
+        bg: 'var(--mantine-primary-color-5)',
         c: 'var(--mantine-color-white)',
       },
     },
@@ -158,10 +158,10 @@ export const mantineTheme: MantineThemeOverride = createTheme({
       styles: () => ({
         root: {
           backgroundColor: 'var(--mantine-color-white)',
-          border: '1px solid var(--mantine-primary-color-6)',
+          border: '1px solid var(--mantine-primary-color-5)',
         },
         indicator: {
-          backgroundColor: 'var(--mantine-primary-color-6)',
+          backgroundColor: 'var(--mantine-primary-color-5)',
           c: 'var(--mantine-color-white)',
         },
       }),
@@ -189,12 +189,12 @@ export const mantineTheme: MantineThemeOverride = createTheme({
 export const cssVariablesResolver: CSSVariablesResolver = (theme) => ({
   variables: {},
   light: {
-    '--aimm-svg-color': 'var(--mantine-primary-color-6)',
+    '--aimm-svg-color': 'var(--mantine-primary-color-5)',
     '--aimm-bg-paper': theme.other.bpPaperLight,
     '--aimm-background': theme.other.lightBackground,
   },
   dark: {
-    '--aimm-svg-color': 'var(--mantine-primary-color-6)',
+    '--aimm-svg-color': 'var(--mantine-primary-color-5)',
     '--aimm-bg-paper': theme.other.bpPaperDark,
     '--aimm-background': theme.other.darkBackground,
   },

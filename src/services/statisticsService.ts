@@ -15,4 +15,14 @@ export const statisticsService = {
     const data = await response.json();
     return data;
   },
+  async deleteStatistics(): Promise<void> {
+    const response = await callAuthApi(`/api/v1/statistics`, Method.DELETE);
+    if (!response) {
+      throw new Error('statistics-delete-failed');
+    }
+    if (!response.ok) {
+      const data = await response.json();
+      throw new Error(data.errors[0]);
+    }
+  },
 };

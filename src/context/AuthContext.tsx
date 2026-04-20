@@ -12,7 +12,8 @@ export type Permission =
   | 'write-other-tables'
   | 'read-takeaway'
   | 'write-takeaway'
-  | 'read-statistics';
+  | 'read-statistics'
+  | 'delete-statistics';
 
 export interface JwtClaims {
   iss: string; // issuer

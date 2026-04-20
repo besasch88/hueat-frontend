@@ -47,7 +47,7 @@ export function PageTitle({ title, backLink, actions, alert }: PageTitleProps) {
           aria-label="Back"
           size={50}
           onClick={onBackClickHandler}
-          color="var(--mantine-primary-color-6)"
+          color="var(--mantine-primary-color-5)"
         >
           <IconCircleArrowLeft stroke={1.5} />
         </ActionIcon>
@@ -67,7 +67,7 @@ export function PageTitle({ title, backLink, actions, alert }: PageTitleProps) {
           transitionProps={{ transition: 'rotate-right', duration: 150 }}
         >
           <Menu.Target>
-            <ActionIcon variant="outline" aria-label="Actions" size={50} color="var(--mantine-primary-color-6)">
+            <ActionIcon variant="outline" aria-label="Actions" size={50} color="var(--mantine-primary-color-5)">
               <IconDots stroke={1.5} />
             </ActionIcon>
           </Menu.Target>

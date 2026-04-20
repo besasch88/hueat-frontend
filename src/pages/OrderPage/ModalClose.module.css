@@ -6,7 +6,7 @@
   transition: border-color 150ms ease;
 
   &[data-checked] {
-    border-color: var(--mantine-primary-color-6);
+    border-color: var(--mantine-primary-color-5);
     background-color: var(--mantine-primary-color-1);
   }
 

@@ -17,7 +17,7 @@ export function SwitchOnOff<T>({ reference, checked, readOnly, onChange }: Switc
   };
 
   // Content
-  const checkIcon = () => <IconCheck size={12} color="var(--mantine-primary-color-6)" stroke={3} />;
+  const checkIcon = () => <IconCheck size={12} color="var(--mantine-primary-color-5)" stroke={3} />;
   const xIcon = () => <IconX size={12} color="var(--mantine-color-red-6)" stroke={3} />;
 
   return (
@@ -27,7 +27,7 @@ export function SwitchOnOff<T>({ reference, checked, readOnly, onChange }: Switc
       onLabel="ON"
       offLabel="OFF"
       onChange={onSwitchChangeHandler}
-      color="var(--mantine-primary-color-6)"
+      color="var(--mantine-primary-color-5)"
       thumbIcon={checked ? checkIcon() : xIcon()}
     ></Switch>
   );
