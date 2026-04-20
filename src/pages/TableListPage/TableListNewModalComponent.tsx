@@ -80,6 +80,7 @@ export function TableListNewModalComponent({ isOpen, onClose }: TableListNewModa
         <TextInput
           size="lg"
           autoFocus
+          autoComplete="off"
           withAsterisk
           disabled={apiLoading}
           leftSection={<IconLayout2 size={22} />}

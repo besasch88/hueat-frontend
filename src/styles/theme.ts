@@ -93,6 +93,13 @@ export const mantineTheme: MantineThemeOverride = createTheme({
       defaultProps: {
         size: 'sm',
       },
+      styles: () => ({
+        root: {
+          userSelect: 'none',
+          WebkitUserSelect: 'none',
+          WebkitTouchCallout: 'none',
+        },
+      }),
     },
     Affix: {
       defaultProps: {

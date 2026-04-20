@@ -89,7 +89,7 @@ export function ModalPrintOrder({ table, menu, order, course, onPrintDone }: Mod
   };
 
   // Content
-  const printItem = (menuItem: MenuItem | MenuOption, quantity: number) => {
+  const printItem = (menuItem: MenuItem | MenuOption, quantity: number, note?: string) => {
     return (
       <Box key={`course_item_${menuItem.id}`}>
         <Group wrap="nowrap" w={'100%'} mb={6} justify="space-between">
@@ -103,6 +103,12 @@ export function ModalPrintOrder({ table, menu, order, course, onPrintDone }: Mod
             <b>{quantity}</b>
             {' x '}
             {menuItem.title}
+            {note && (
+              <>
+                <br />
+                <i style={{ fontSize: '0.8em' }}>- {note}</i>
+              </>
+            )}
           </Text>
         </Group>
       </Box>
@@ -118,7 +124,7 @@ export function ModalPrintOrder({ table, menu, order, course, onPrintDone }: Mod
             return tot + a.quantity;
           }, 0);
           if (tot > 0) {
-            return printItem(i, tot);
+            return printItem(i, tot, x[0].note);
           }
         } else {
           return i.options.map((o) => {
@@ -127,7 +133,7 @@ export function ModalPrintOrder({ table, menu, order, course, onPrintDone }: Mod
               return tot + a.quantity;
             }, 0);
             if (tot > 0) {
-              return printItem(o, tot);
+              return printItem(o, tot, x[0].note);
             }
           });
         }

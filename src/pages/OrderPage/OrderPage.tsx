@@ -30,8 +30,8 @@ import { ModalReopenTable } from './ModalReopenTable';
 import classes from './Order.module.css';
 
 import { getOrderActions } from './OrderActionsData';
-import { OrderComponent } from './OrderComponent';
 import { OrderCourseNavigationComponent } from './OrderCourseNavigationComponent';
+import { OrderItemComponent } from './OrderItemComponent';
 import { useModals } from './OrderModals';
 import { orderFinalPrice } from './OrderUtils';
 
@@ -349,6 +349,57 @@ export function OrderPage() {
     setOrder(updatedOrder);
   };
 
+  const onItemNoteChange = (o: Order, itemId: string, note: string) => {
+    if (!currentCourse) return;
+    const updatedCourse = {
+      ...currentCourse,
+    };
+    const index = updatedCourse.items.findIndex((i) => {
+      return i.menuItemId == itemId && i.menuOptionId == null;
+    });
+    if (index == -1) {
+      updatedCourse.items.push({
+        menuItemId: itemId,
+        quantity: 0,
+        note: note,
+      });
+    } else {
+      updatedCourse.items[index].note = note;
+    }
+    setCurrentCourse(updatedCourse);
+    const updatedOrder = { ...o };
+    updatedOrder.courses = updatedOrder.courses.map((c) => {
+      return c.id == updatedCourse.id ? updatedCourse : c;
+    });
+    setOrder(updatedOrder);
+  };
+
+  const onOptionNoteChange = (o: Order, itemId: string, optionId: string, note: string) => {
+    if (!currentCourse) return;
+    const updatedCourse = {
+      ...currentCourse,
+    };
+    const index = updatedCourse.items.findIndex((i) => {
+      return i.menuItemId == itemId && i.menuOptionId == optionId;
+    });
+    if (index == -1) {
+      updatedCourse.items.push({
+        menuItemId: itemId,
+        menuOptionId: optionId,
+        quantity: 0,
+        note: note,
+      });
+    } else {
+      updatedCourse.items[index].note = note;
+    }
+    setCurrentCourse(updatedCourse);
+    const updatedOrder = { ...o };
+    updatedOrder.courses = updatedOrder.courses.map((c) => {
+      return c.id == updatedCourse.id ? updatedCourse : c;
+    });
+    setOrder(updatedOrder);
+  };
+
   // Content
   return (
     <AuthGuard>
@@ -421,7 +472,7 @@ export function OrderPage() {
               <StackList>
                 {currentCategory.items.map((menuItem, index) => {
                   return (
-                    <OrderComponent
+                    <OrderItemComponent
                       key={`menu_item_${index}`}
                       menuItem={menuItem}
                       orderCourse={currentCourse}
@@ -432,6 +483,8 @@ export function OrderPage() {
                       onRemoveItemQuantity={(itemId) => onRemoveItemQuantity(order, itemId)}
                       onAddOptionQuantity={(itemId, optionId) => onAddOptionQuantity(order, itemId, optionId)}
                       onRemoveOptionQuantity={(itemId, optionId) => onRemoveOptionQuantity(order, itemId, optionId)}
+                      onItemNoteChange={(itemId, note) => onItemNoteChange(order, itemId, note)}
+                      onOptionNoteChange={(itemId, optionId, note) => onOptionNoteChange(order, itemId, optionId, note)}
                       ref={(el: HTMLElement | null) => {
                         itemsRef.current[menuItem.id] = el;
                       }}
