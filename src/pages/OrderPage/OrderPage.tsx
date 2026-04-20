@@ -78,7 +78,7 @@ export function OrderPage() {
         try {
           const orderData = await orderService.getOrder({ id: tableId });
           setOrder(orderData.item);
-          setCurrentCourse(orderData.item.courses[0]);
+          setCurrentCourse(orderData.item.courses[orderData.item.courses.length - 1]);
         } catch (err: unknown) {
           switch (getErrorMessage(err)) {
             case 'order-not-found': {
@@ -87,7 +87,7 @@ export function OrderPage() {
                 courses: [{ id: uuidv4().toString(), items: [] }],
               };
               setOrder(currentOrder);
-              setCurrentCourse(currentOrder.courses[0]);
+              setCurrentCourse(currentOrder.courses[currentOrder.courses.length - 1]);
               break;
             }
             case 'refresh-token-failed':
