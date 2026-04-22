@@ -76,32 +76,34 @@ export function TableListNewModalComponent({ isOpen, onClose }: TableListNewModa
 
   return (
     <Modal centered withCloseButton title={t('tableAddNew')} opened={isOpen} onClose={onModalClose}>
-      <form onSubmit={form.onSubmit(handleCreateTableSubmit)}>
-        <TextInput
-          size="lg"
-          autoFocus
-          autoComplete="off"
-          withAsterisk
-          disabled={apiLoading}
-          leftSection={<IconLayout2 size={22} />}
-          placeholder={t('tableInsertTypeName')}
-          key={form.key('name')}
-          {...form.getInputProps('name')}
-          onChange={onInputFormChange}
-          mt={'md'}
-          mb="lg"
-        />
-        <Button
-          type="submit"
-          size="lg"
-          fullWidth
-          loading={apiLoading}
-          loaderProps={{ type: 'dots' }}
-          leftSection={<IconCirclePlus size={28} />}
-        >
-          {t('tableAdd')}
-        </Button>
-      </form>
+      {isOpen && (
+        <form onSubmit={form.onSubmit(handleCreateTableSubmit)}>
+          <TextInput
+            size="lg"
+            autoFocus
+            autoComplete="off"
+            withAsterisk
+            disabled={apiLoading}
+            leftSection={<IconLayout2 size={22} />}
+            placeholder={t('tableInsertTypeName')}
+            key={form.key('name')}
+            {...form.getInputProps('name')}
+            onChange={onInputFormChange}
+            mt={'md'}
+            mb="lg"
+          />
+          <Button
+            type="submit"
+            size="lg"
+            fullWidth
+            loading={apiLoading}
+            loaderProps={{ type: 'dots' }}
+            leftSection={<IconCirclePlus size={28} />}
+          >
+            {t('tableAdd')}
+          </Button>
+        </form>
+      )}
     </Modal>
   );
 }

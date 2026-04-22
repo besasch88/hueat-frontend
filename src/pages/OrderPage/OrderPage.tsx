@@ -27,8 +27,8 @@ import { ModalCloseTable } from './ModalCloseTable';
 import { ModalPrintBill } from './ModalPrintBill';
 import { ModalPrintOrder } from './ModalPrintOrder';
 import { ModalReopenTable } from './ModalReopenTable';
-import classes from './Order.module.css';
 
+import classes from './Order.module.css';
 import { getOrderActions } from './OrderActionsData';
 import { OrderCourseNavigationComponent } from './OrderCourseNavigationComponent';
 import { OrderCustomItemComponent } from './OrderCustomItemComponent';
@@ -446,7 +446,7 @@ export function OrderPage() {
                     onMenuActionClick(code);
                   })}
                   alert={
-                    table.inside && !hasAtLeastOneCover(order)
+                    table.inside && !table.close && !hasAtLeastOneCover(order)
                       ? {
                           color: 'orange',
                           ta: 'center',
@@ -464,7 +464,7 @@ export function OrderPage() {
 
             {table.close && (
               <Grid.Col span={12}>
-                <Alert variant="filled" color="var(--mantine-primary-color-5)" ta={'center'}>
+                <Alert ta={'center'}>
                   <Text fz={20}>
                     {t(table.paymentMethod || '')}: <b>{orderFinalPrice(order, menu).toFixed(2)}€</b>
                   </Text>
@@ -476,10 +476,7 @@ export function OrderPage() {
                 size="lg"
                 fullWidth
                 value={currentCategory.id}
-                classNames={{
-                  indicator: classes.indicator,
-                  root: classes.segmentRoot,
-                }}
+                className={classes.segmentRoot}
                 onChange={(value) => setCurrentCategory(getCategoryById(menu, value))}
                 data={categories.map((c) => {
                   return {
@@ -532,13 +529,15 @@ export function OrderPage() {
               onClose={modals.reopenTable.close}
               title={`${t('tableTable').toUpperCase()} ${table.name}`}
             >
-              <ModalReopenTable
-                table={table}
-                onClick={(t) => {
-                  setTable(t);
-                  modals.reopenTable.close();
-                }}
-              />
+              {modals.reopenTable.isOpen && (
+                <ModalReopenTable
+                  table={table}
+                  onClick={(t) => {
+                    setTable(t);
+                    modals.reopenTable.close();
+                  }}
+                />
+              )}
             </Modal>
             <Modal
               centered
@@ -547,13 +546,15 @@ export function OrderPage() {
               onClose={modals.closeTable.close}
               title={`${t('tableTable').toUpperCase()} ${table.name}`}
             >
-              <ModalCloseTable
-                table={table}
-                onClick={(t) => {
-                  setTable(t);
-                  modals.closeTable.close();
-                }}
-              />
+              {modals.closeTable.isOpen && (
+                <ModalCloseTable
+                  table={table}
+                  onClick={(t) => {
+                    setTable(t);
+                    modals.closeTable.close();
+                  }}
+                />
+              )}
             </Modal>
             <Modal
               centered
@@ -562,13 +563,15 @@ export function OrderPage() {
               onClose={modals.closeAndSendTable.close}
               title={`${t('tableTable').toUpperCase()} ${table.name}`}
             >
-              <ModalCloseAndSendTable
-                table={table}
-                onClick={(t) => {
-                  setTable(t);
-                  modals.closeAndSendTable.close();
-                }}
-              />
+              {modals.closeAndSendTable.isOpen && (
+                <ModalCloseAndSendTable
+                  table={table}
+                  onClick={(t) => {
+                    setTable(t);
+                    modals.closeAndSendTable.close();
+                  }}
+                />
+              )}
             </Modal>
             <Modal
               centered
@@ -577,14 +580,16 @@ export function OrderPage() {
               onClose={modals.printOrder.close}
               title={`${t('tableTable').toUpperCase()} ${table.name}`}
             >
-              <ModalPrintOrder
-                table={table}
-                menu={menu}
-                order={order}
-                onPrintDone={() => {
-                  modals.printOrder.close();
-                }}
-              />
+              {modals.printOrder.isOpen && (
+                <ModalPrintOrder
+                  table={table}
+                  menu={menu}
+                  order={order}
+                  onPrintDone={() => {
+                    modals.printOrder.close();
+                  }}
+                />
+              )}
             </Modal>
             <Modal
               centered
@@ -593,15 +598,17 @@ export function OrderPage() {
               onClose={modals.printCourse.close}
               title={`${t('tableTable').toUpperCase()} ${table.name}`}
             >
-              <ModalPrintOrder
-                table={table}
-                menu={menu}
-                course={currentCourse}
-                order={order}
-                onPrintDone={() => {
-                  modals.printCourse.close();
-                }}
-              />
+              {modals.printCourse.isOpen && (
+                <ModalPrintOrder
+                  table={table}
+                  menu={menu}
+                  course={currentCourse}
+                  order={order}
+                  onPrintDone={() => {
+                    modals.printCourse.close();
+                  }}
+                />
+              )}
             </Modal>
             <Modal
               centered
@@ -610,14 +617,16 @@ export function OrderPage() {
               onClose={modals.printBill.close}
               title={`${t('tableTable').toUpperCase()} ${table.name}`}
             >
-              <ModalPrintBill
-                table={table}
-                menu={menu}
-                order={order}
-                onPrintDone={() => {
-                  modals.printBill.close();
-                }}
-              />
+              {modals.printBill.isOpen && (
+                <ModalPrintBill
+                  table={table}
+                  menu={menu}
+                  order={order}
+                  onPrintDone={() => {
+                    modals.printBill.close();
+                  }}
+                />
+              )}
             </Modal>
             <Modal
               centered
@@ -626,14 +635,16 @@ export function OrderPage() {
               onClose={modals.newCustomItem.close}
               title={t('addCustomItem').toUpperCase()}
             >
-              <OrderItemNewModalComponent
-                table={table}
-                menuCategory={currentCategory}
-                onAddCustomItem={(i) => {
-                  modals.newCustomItem.close();
-                  onAddCustomItem(order, i);
-                }}
-              />
+              {modals.newCustomItem.isOpen && (
+                <OrderItemNewModalComponent
+                  table={table}
+                  menuCategory={currentCategory}
+                  onAddCustomItem={(i) => {
+                    modals.newCustomItem.close();
+                    onAddCustomItem(order, i);
+                  }}
+                />
+              )}
             </Modal>
           </>
         )}

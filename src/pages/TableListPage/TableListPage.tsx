@@ -9,6 +9,7 @@ import { getErrorMessage } from '@utils/errUtils';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
+import classes from './TableList.module.css';
 import { TableListMyComponent } from './TableListMyComponent';
 import { TableListNewButtonComponent } from './TableListNewButtonComponent';
 import { TableListNewModalComponent } from './TableListNewModalComponent';
@@ -77,6 +78,7 @@ export function TableListPage() {
           <>
             <Grid.Col span={12}>
               <SegmentedControl
+                className={classes.segmentRoot}
                 onChange={setSelectedSection}
                 fullWidth
                 size="lg"

@@ -110,6 +110,7 @@ export function OrderOptionComponent({
             <Button
               component="div"
               variant="filled"
+              bg={'var(--mantine-primary-color-7)'}
               onClick={() => {
                 onAddOptionQuantity(menuItemId, option.id);
               }}

@@ -1,24 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Created with Inkscape (http://www.inkscape.org/) -->
-
 <svg
-   width="500"
-   height="500"
-   viewBox="0 0 132.29166 132.29167"
+   viewBox="0 0 1024 1024"
+   font-family="Inter, 'Helvetica Neue', Arial, sans-serif"
    version="1.1"
-   id="svg1"
-   inkscape:version="1.4 (e7c3feb1, 2024-10-09)"
-   sodipodi:docname="favicon.svg"
-   inkscape:export-filename="icon.png"
-   inkscape:export-xdpi="34.560001"
-   inkscape:export-ydpi="34.560001"
+   id="svg4"
+   sodipodi:docname="LogoRounded.svg"
+   inkscape:version="1.4.2 (ebf0e940, 2025-05-08)"
+   width="1024"
+   height="1024"
+   inkscape:export-filename="LogoRounded.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg">
   <sodipodi:namedview
-     id="namedview1"
+     id="namedview4"
      pagecolor="#ffffff"
      bordercolor="#000000"
      borderopacity="0.25"
@@ -26,111 +24,87 @@
      inkscape:pageopacity="0.0"
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
-     inkscape:document-units="mm"
-     showguides="true"
-     inkscape:zoom="1.017964"
-     inkscape:cx="140.96766"
-     inkscape:cy="255.41179"
-     inkscape:window-width="1920"
-     inkscape:window-height="1027"
-     inkscape:window-x="0"
-     inkscape:window-y="25"
+     inkscape:zoom="0.28427344"
+     inkscape:cx="488.96583"
+     inkscape:cy="627.91655"
+     inkscape:window-width="1512"
+     inkscape:window-height="834"
+     inkscape:window-x="201"
+     inkscape:window-y="1113"
      inkscape:window-maximized="1"
-     inkscape:current-layer="layer1">
-    <sodipodi:guide
-       position="21.312967,308.51353"
-       orientation="0,-1"
-       id="guide13"
-       inkscape:locked="false" />
-  </sodipodi:namedview>
+     inkscape:current-layer="svg4" />
   <defs
-     id="defs1">
+     id="defs2">
     <linearGradient
-       id="linearGradient33"
-       inkscape:collect="always">
-      <stop
-         style="stop-color:#68b0ee;stop-opacity:1;"
-         offset="0.52736318"
-         id="stop34" />
-      <stop
-         style="stop-color:#228be6;stop-opacity:1;"
-         offset="0.93366504"
-         id="stop35" />
-    </linearGradient>
-    <rect
-       x="250"
-       y="7.373303"
-       width="365.77501"
-       height="488.35576"
-       id="rect8" />
-    <rect
-       x="0"
-       y="0"
-       width="500"
-       height="500"
-       id="rect7" />
-    <rect
-       x="0"
-       y="0"
-       width="500"
-       height="500"
-       id="rect2" />
-    <radialGradient
-       inkscape:collect="always"
-       xlink:href="#linearGradient33"
-       id="radialGradient35"
-       cx="-47.436691"
-       cy="66.145836"
-       fx="-47.436691"
-       fy="66.145836"
-       r="66.145836"
+       id="bg"
+       x1="0"
+       y1="0"
+       x2="1000"
+       y2="1000"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="translate(113.58253,0.30000305)" />
+       gradientTransform="scale(1.024)">
+      <stop
+         offset="0%"
+         stop-color="#22b8cf"
+         id="stop1" />
+      <stop
+         offset="100%"
+         stop-color="#0ca678"
+         id="stop2" />
+    </linearGradient>
   </defs>
+  <!-- Square gradient background -->
+  <rect
+     width="1024"
+     height="1024"
+     fill="url(#bg)"
+     id="rect2"
+     x="0"
+     y="0"
+     style="fill:url(#bg);stroke:none;stroke-width:1.024"
+     ry="200" />
+  <!--
+    Wordmark HUEAT: font-size 160, ~5 chars wide ≈ 460px wide, centered at x=500
+    so it spans roughly x=270 → x=730 (width 460)
+    Mountain should match that width: 460px wide, centered horizontally
+    Height proportional: keeping the original aspect (~215w x 90h ≈ 0.42 ratio)
+    → 460w x ~195h
+    Place mountain vertically centered in upper half
+  -->
+  <!-- Mountains, centered, scaled to match wordmark width -->
+  <!-- Wordmark HUEAT -->
   <g
-     inkscape:label="Livello 1"
-     inkscape:groupmode="layer"
-     id="layer1">
-    <rect
-       style="fill:url(#radialGradient35);fill-opacity:1;stroke:none;stroke-width:0.632307;stroke-dasharray:none;stroke-opacity:1"
-       id="rect33"
-       width="132.29167"
-       height="132.29167"
-       x="0"
-       y="0.30000305"
-       inkscape:label="blu_rect" />
-    <path
-       style="display:inline;fill:#bde1fd;fill-opacity:1;stroke:#2a8de4;stroke-width:0.6;stroke-dasharray:none;stroke-opacity:1"
-       d="m 54.826206,150.24578 c -7.659073,-0.0705 -11.070196,-0.16925 -11.119516,-0.32175 -0.278207,-0.8603 1.865003,-2.11716 6.558624,-3.84628 12.435919,-4.58131 13.766295,-7.77686 13.263048,-31.85779 C 63.246424,100.72866 62.689506,99.280322 56.60527,96.215384 41.224803,88.467496 33.985589,74.869787 36.987744,59.367072 38.413504,52.004669 43.55958,33.081284 45.13196,29.418771 l 0.468347,-1.090899 h 20.570644 20.570623 l 0.468358,1.090899 c 1.509624,3.516276 6.277904,20.90071 7.932595,28.920979 1.602416,7.766982 0.857502,14.924816 -2.069659,21.151204 v 0 c -3.216645,6.842157 -9.068459,12.559539 -17.336235,16.72443 -6.08445,3.065037 -6.642144,4.515566 -6.922386,18.004576 -0.500886,24.10941 0.779784,27.20168 13.179699,31.82315 4.900218,1.82632 7.287296,3.27386 6.587508,3.99471 -0.234446,0.2415 -18.13828,0.3518 -33.755248,0.20796 z"
-       id="path1"
-       sodipodi:nodetypes="ssssssscccsssssssss"
-       inkscape:label="bicchiere" />
+     id="g4"
+     transform="matrix(1.024,0,0,1.024,0,41.9982)">
     <g
-       id="g12"
-       inkscape:label="white"
-       style="display:none"
-       sodipodi:insensitive="true">
+       transform="matrix(1.7436138,0,0,1.7436138,154.76447,138.00885)"
+       id="g3">
+      <!-- Back range (lighter) -->
       <path
-         d="M 66.145833,132.29167 A 66.145836,66.145836 0 0 1 0,66.145833 v 66.145837 z"
-         style="fill:#fcfcfc;stroke:#ffffff;stroke-width:0"
-         id="path12" />
+         d="M 0,195 107,45 q 11,-15 21,0 l 75,96 86,-106 q 11,-15 22,0 l 85,160 z"
+         fill="#ffffff"
+         opacity="0.55"
+         id="path2" />
+      <!-- Front range (solid white) -->
       <path
-         d="M 132.29167,66.145833 A 66.145836,66.145836 0 0 1 66.145833,132.29167 h 66.145837 z"
-         style="fill:#fcfcfc;stroke:#ffffff;stroke-width:0"
-         id="path11" />
-      <path
-         d="M 66.145833,0 A 66.145836,66.145836 0 0 1 132.29167,66.145833 V 0 Z"
-         style="fill:#fcfcfc;stroke:#ffffff;stroke-width:0"
-         id="path10" />
-      <path
-         d="M 0,0 V 66.145833 A 66.145836,66.145836 0 0 1 66.145833,0 Z"
-         style="fill:#fcfcfc;stroke:#ffffff;stroke-width:0"
-         id="path9" />
+         d="M 0,215 86,97 q 10,-15 21,0 l 64,86 75,-108 q 11,-15 22,0 l 128,140 z"
+         fill="#ffffff"
+         id="path3" />
     </g>
-    <path
-       d="m 78.245581,53.231111 -2.508896,4.340971 q -2.039943,-1.756579 -6.565335,-1.756579 -4.290914,0 -7.034285,3.109345 -2.743374,3.089157 -2.743374,7.833939 0,4.744781 2.532345,7.53108 2.55579,2.786297 6.799808,2.786297 4.85366,0 7.597032,-2.988203 l 2.837162,4.240019 q -3.728173,3.412204 -10.926591,3.412204 -7.198422,0 -11.184516,-4.078493 -3.986098,-4.078495 -3.986098,-11.125001 0,-6.561931 4.408153,-10.963474 4.431603,-4.421733 11.325203,-4.421733 5.908801,0 9.449392,2.079628 z"
-       id="text32"
-       style="font-weight:bold;font-size:26.4583px;line-height:0.7;font-family:'Trebuchet MS';-inkscape-font-specification:'Trebuchet MS Bold';text-align:center;letter-spacing:0.00264583px;word-spacing:0px;text-anchor:middle;fill:#6eb3ee;fill-opacity:1;stroke:#59a6ea;stroke-width:0.445608"
-       aria-label="C" />
+    <text
+       x="497.20703"
+       y="729.98279"
+       font-size="160"
+       font-weight="800"
+       letter-spacing="-3"
+       text-anchor="middle"
+       id="text4"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:169.27083333px;font-family:Inter;-inkscape-font-specification:'Inter Bold'"><tspan
+         fill="#212529"
+         id="tspan3"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Inter;-inkscape-font-specification:'Inter Bold';font-size:169.27083333px">HU</tspan><tspan
+         fill="#ffffff"
+         id="tspan4"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Inter;-inkscape-font-specification:'Inter Bold';font-size:169.27083333px">EAT</tspan></text>
   </g>
 </svg>

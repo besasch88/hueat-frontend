@@ -212,12 +212,14 @@ export function StatisticsPage() {
                   <Modal.CloseButton />
                 </Modal.Header>
                 <Modal.Body>
-                  <ModalDeleteStatistics
-                    onDeleted={() => {
-                      closeDeleteModal();
-                      refetchStatistics();
-                    }}
-                  />
+                  {deleteModalOpen && (
+                    <ModalDeleteStatistics
+                      onDeleted={() => {
+                        closeDeleteModal();
+                        refetchStatistics();
+                      }}
+                    />
+                  )}
                 </Modal.Body>
               </Modal.Content>
             </Modal.Root>

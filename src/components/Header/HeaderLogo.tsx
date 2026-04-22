@@ -1,18 +1,11 @@
-import { Group, Image, Title } from '@mantine/core';
-import { useTranslation } from 'react-i18next';
+import { Group, Image } from '@mantine/core';
 import classes from './HeaderLogo.module.css';
 
 export function HeaderLogo() {
-  //Services
-  const { t } = useTranslation();
-
   // Content
   return (
     <Group gap={10} wrap="nowrap" style={{ cursor: 'pointer' }}>
-      <Image src="/icon.svg" alt="Logo Icon" className={classes.logo} />
-      <Title textWrap="nowrap" order={4} mb={0}>
-        {t('appName')}
-      </Title>
+      <Image src="/header.svg" alt="Logo Icon" className={classes.logo} />
     </Group>
   );
 }

@@ -45,6 +45,7 @@ export function ModalDeleteStatistics({ onDeleted }: ModalDeleteStatisticsProps)
       <Button
         onClick={() => handleDeleteSubmit()}
         size="lg"
+        variant="filled"
         fullWidth
         loading={apiLoading}
         loaderProps={{ type: 'dots' }}

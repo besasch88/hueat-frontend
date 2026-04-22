@@ -34,7 +34,7 @@ export function NavbarItem({ icon: Icon, label, link }: NavbarItemProps) {
     <UnstyledButton onClick={onClickHandler} className={className}>
       <Group justify="space-between" gap={0}>
         <Box style={{ display: 'flex', alignItems: 'center' }}>
-          <ThemeIcon variant="filled" bd="1px solid" size={40}>
+          <ThemeIcon bd="1px solid" size={40}>
             <Icon size={25} />
           </ThemeIcon>
           <Box ml="md">{label}</Box>

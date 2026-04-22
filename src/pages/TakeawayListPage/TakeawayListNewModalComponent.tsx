@@ -81,37 +81,39 @@ export function TakeawayListNewModalComponent({
 
   return (
     <Modal centered withCloseButton title={t('takeawayAddNew')} opened={isOpen} onClose={onModalClose}>
-      <form onSubmit={form.onSubmit(handleCreateTakeawaySubmit)}>
-        <Group wrap="nowrap">
-          <Text size="lg" mt={'md'} mb="lg" w={200}>
-            ASPORTO N.RO:
-          </Text>
-          <NumberInput
+      {isOpen && (
+        <form onSubmit={form.onSubmit(handleCreateTakeawaySubmit)}>
+          <Group wrap="nowrap">
+            <Text size="lg" mt={'md'} mb="lg" w={200}>
+              ASPORTO N.RO:
+            </Text>
+            <NumberInput
+              size="lg"
+              autoFocus
+              withAsterisk
+              disabled={apiLoading}
+              placeholder={t('takeawayInsertTypeName')}
+              key={form.key('name')}
+              {...form.getInputProps('name')}
+              onChange={onInputFormChange}
+              allowDecimal={false}
+              min={1}
+              mt={'md'}
+              mb="lg"
+            />
+          </Group>
+          <Button
+            type="submit"
             size="lg"
-            autoFocus
-            withAsterisk
-            disabled={apiLoading}
-            placeholder={t('takeawayInsertTypeName')}
-            key={form.key('name')}
-            {...form.getInputProps('name')}
-            onChange={onInputFormChange}
-            allowDecimal={false}
-            min={1}
-            mt={'md'}
-            mb="lg"
-          />
-        </Group>
-        <Button
-          type="submit"
-          size="lg"
-          fullWidth
-          loading={apiLoading}
-          loaderProps={{ type: 'dots' }}
-          leftSection={<IconCirclePlus size={28} />}
-        >
-          {t('takeawayAdd')}
-        </Button>
-      </form>
+            fullWidth
+            loading={apiLoading}
+            loaderProps={{ type: 'dots' }}
+            leftSection={<IconCirclePlus size={28} />}
+          >
+            {t('takeawayAdd')}
+          </Button>
+        </form>
+      )}
     </Modal>
   );
 }

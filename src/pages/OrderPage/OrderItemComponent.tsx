@@ -142,7 +142,12 @@ function OrderItemComponentFunc(
               }
               rightSection={
                 canEdit && (
-                  <Button component="div" variant="filled" onClick={() => onAddItemQuantity(menuItem.id)}>
+                  <Button
+                    component="div"
+                    variant="filled"
+                    bg={'var(--mantine-primary-color-7)'}
+                    onClick={() => onAddItemQuantity(menuItem.id)}
+                  >
                     <IconPlus color="var(--mantine-color-white)" />
                   </Button>
                 )

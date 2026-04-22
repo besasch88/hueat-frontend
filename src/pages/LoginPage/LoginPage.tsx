@@ -1,5 +1,5 @@
 import { useAuth } from '@context/AuthContext';
-import { Box, Container, Image, Paper, Title } from '@mantine/core';
+import { Box, Container, Image, Paper } from '@mantine/core';
 import { authService } from '@services/authService';
 import { getErrorMessage } from '@utils/errUtils';
 import { useEffect, useState } from 'react';
@@ -62,9 +62,7 @@ export function LoginPage() {
           <Container className={classes.boxLogin}>
             <Paper p={'lg'}>
               <Image src="/icon.svg" alt="Login Icon" className={classes.boxLogo} />
-              <Title className={classes.boxTitle} order={2}>
-                {t('appName')}
-              </Title>
+
               <LoginPageForm />
             </Paper>
           </Container>

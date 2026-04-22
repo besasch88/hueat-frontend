@@ -31,7 +31,7 @@ export function TableTr({ trKey, tds }: TableTrProps) {
                 <CopyButton value={td.text} timeout={1000}>
                   {({ copied, copy }) => (
                     <ActionIcon
-                      color={copied ? 'var(--mantine-primary-color-5)' : 'gray'}
+                      color={copied ? 'var(--mantine-primary-color-6)' : 'gray'}
                       variant="subtle"
                       onClick={copy}
                     >

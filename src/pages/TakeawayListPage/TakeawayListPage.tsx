@@ -9,6 +9,7 @@ import { getErrorMessage } from '@utils/errUtils';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
+import classes from './TakeawayList.module.css';
 import { TakeawayListMyComponent } from './TakeawayListMyComponent';
 import { TakeawayListNewButtonComponent } from './TakeawayListNewButtonComponent';
 import { TakeawayListNewModalComponent } from './TakeawayListNewModalComponent';
@@ -86,6 +87,7 @@ export function TakeawayListPage() {
               <SegmentedControl
                 onChange={setSelectedSection}
                 fullWidth
+                className={classes.segmentRoot}
                 size="lg"
                 data={[
                   {

@@ -4,7 +4,6 @@ import '@fontsource/inter/300.css';
 import '@fontsource/inter/600.css';
 import '@fontsource/montserrat';
 import '@fontsource/montserrat/600.css';
-
 import '@mantine/charts/styles.css';
 import '@mantine/core/styles.css';
 import '@mantine/notifications/styles.css';

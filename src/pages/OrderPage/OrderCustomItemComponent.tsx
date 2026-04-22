@@ -17,9 +17,9 @@ export function OrderCustomItemComponent({ onClick }: OrderCustomItemComponentPr
         p={5}
         variant="filled"
         mb={'xl'}
-        bd={'1px solid var(--mantine-primary-color-9)'}
+        bd={'1px solid var(--mantine-primary-color-7)'}
         bg={'var(--mantine-color-white)'}
-        c={'var(--mantine-primary-color-9)'}
+        c={'var(--mantine-primary-color-7)'}
         fz={16}
         fw={600}
         onClick={onClick}

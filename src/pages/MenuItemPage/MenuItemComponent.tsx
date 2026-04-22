@@ -61,9 +61,9 @@ export function MenuItemComponent({
 
   let menuButtonIcon;
   if (isOnlyOutside) {
-    menuButtonIcon = <IconDoorExit color="var(--mantine-primary-color-5)"></IconDoorExit>;
+    menuButtonIcon = <IconDoorExit color="var(--mantine-primary-color-6)"></IconDoorExit>;
   } else if (isOnlyInside) {
-    menuButtonIcon = <IconLayout2 color="var(--mantine-primary-color-5)"></IconLayout2>;
+    menuButtonIcon = <IconLayout2 color="var(--mantine-primary-color-6)"></IconLayout2>;
   }
 
   return (

@@ -41,7 +41,7 @@ export function MenuOptionComponent({
     <Group wrap="nowrap" gap={6}>
       <MenuButton
         reference={menuItem}
-        rightSection={isOnlyOutside && <IconBasket color="var(--mantine-primary-color-5)"></IconBasket>}
+        rightSection={isOnlyOutside && <IconBasket color="var(--mantine-primary-color-6)"></IconBasket>}
         clickable={false}
         text={btnText}
       ></MenuButton>

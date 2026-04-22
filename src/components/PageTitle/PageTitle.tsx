@@ -47,7 +47,7 @@ export function PageTitle({ title, backLink, actions, alert }: PageTitleProps) {
           aria-label="Back"
           size={50}
           onClick={onBackClickHandler}
-          color="var(--mantine-primary-color-5)"
+          color="var(--mantine-primary-color-6)"
         >
           <IconCircleArrowLeft stroke={1.5} />
         </ActionIcon>
@@ -56,6 +56,7 @@ export function PageTitle({ title, backLink, actions, alert }: PageTitleProps) {
         fullWidth
         w={'100%'}
         size="lg"
+        color="var(--mantine-color-white)"
         data={[{ label: title.toUpperCase(), value: title.toUpperCase() }]}
       ></SegmentedControl>
       {actions && actions.length > 0 && (
@@ -67,7 +68,7 @@ export function PageTitle({ title, backLink, actions, alert }: PageTitleProps) {
           transitionProps={{ transition: 'rotate-right', duration: 150 }}
         >
           <Menu.Target>
-            <ActionIcon variant="outline" aria-label="Actions" size={50} color="var(--mantine-primary-color-5)">
+            <ActionIcon variant="outline" aria-label="Actions" size={50} color="var(--mantine-primary-color-6)">
               <IconDots stroke={1.5} />
             </ActionIcon>
           </Menu.Target>

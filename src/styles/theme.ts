@@ -15,11 +15,21 @@ export const mantineTheme: MantineThemeOverride = createTheme({
       '#080808',
       '#000000',
     ],
+    custom: [
+      '#e4fefb',
+      '#d5f7f3',
+      '#aeede5',
+      '#83e3d7',
+      '#60daca',
+      '#4ad5c3',
+      '#3bd2bf',
+      '#29baa8',
+      '#17a695',
+      '#009081',
+    ],
     red: ['#FFDCE1', '#FFB3B7', '#FF8990', '#FF6068', '#FF3641', '#FF0C1A', '#E6001B', '#CC001C', '#BA0024', '#9A001F'],
   },
   other: {
-    darkBackground: 'var(--mantine-primary-color-9)',
-    lightBackground: 'var(--mantine-primary-color-9)',
     bpPaperDark: '#dee2e6',
     bpPaperLight: '#dee2e6',
   },
@@ -28,7 +38,7 @@ export const mantineTheme: MantineThemeOverride = createTheme({
     lg: '0px 2px 5px rgba(0, 0, 0, .10)',
     xl: '0px 2px 5px rgba(0, 0, 0, .10)',
   },
-  primaryColor: 'teal',
+  primaryColor: 'custom',
   defaultRadius: 'md',
   components: {
     Drawer: {
@@ -89,9 +99,17 @@ export const mantineTheme: MantineThemeOverride = createTheme({
         size: 'sm',
       },
     },
+    ThemeIcon: {
+      defaultProps: {
+        variant: 'gradient',
+        gradient: { from: 'cyan', to: 'teal', deg: 70 },
+      },
+    },
     Button: {
       defaultProps: {
         size: 'sm',
+        variant: 'gradient',
+        gradient: { from: 'cyan', to: 'teal', deg: 70 },
       },
       styles: () => ({
         root: {
@@ -137,7 +155,7 @@ export const mantineTheme: MantineThemeOverride = createTheme({
       defaultProps: {
         p: 'md',
         h: 60,
-        bg: 'var(--mantine-primary-color-5)',
+        bg: 'linear-gradient(120deg, var(--mantine-color-cyan-filled) 0%, var(--mantine-color-teal-filled) 100%)',
         c: 'var(--mantine-color-white)',
       },
     },
@@ -156,6 +174,7 @@ export const mantineTheme: MantineThemeOverride = createTheme({
       defaultProps: {
         p: 'sm',
         variant: 'filled',
+        bg: 'linear-gradient(90deg, var(--mantine-color-red-filled) 0%, var(--mantine-color-orange-filled) 100%)',
       },
     },
     SegmentedControl: {
@@ -165,14 +184,15 @@ export const mantineTheme: MantineThemeOverride = createTheme({
       styles: () => ({
         root: {
           backgroundColor: 'var(--mantine-color-white)',
-          border: '1px solid var(--mantine-primary-color-5)',
+          border: '1px solid var(--mantine-primary-color-6)',
         },
         indicator: {
-          backgroundColor: 'var(--mantine-primary-color-5)',
-          c: 'var(--mantine-color-white)',
+          background:
+            'linear-gradient(90deg, var(--mantine-color-cyan-filled) 0%, var(--mantine-color-teal-filled) 100%)',
         },
       }),
     },
+
     Pagination: {
       defaultProps: {
         size: 'sm',
@@ -196,13 +216,11 @@ export const mantineTheme: MantineThemeOverride = createTheme({
 export const cssVariablesResolver: CSSVariablesResolver = (theme) => ({
   variables: {},
   light: {
-    '--aimm-svg-color': 'var(--mantine-primary-color-5)',
+    '--aimm-svg-color': 'var(--mantine-primary-color-7)',
     '--aimm-bg-paper': theme.other.bpPaperLight,
-    '--aimm-background': theme.other.lightBackground,
   },
   dark: {
-    '--aimm-svg-color': 'var(--mantine-primary-color-5)',
+    '--aimm-svg-color': 'var(--mantine-primary-color-7)',
     '--aimm-bg-paper': theme.other.bpPaperDark,
-    '--aimm-background': theme.other.darkBackground,
   },
 });
