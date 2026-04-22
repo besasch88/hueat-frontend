@@ -21,6 +21,10 @@ export function useModals() {
     const [isOpen, { open, close }] = useDisclosure(false);
     return { isOpen, open, close };
   };
+  const useNewCustomItem = () => {
+    const [isOpen, { open, close }] = useDisclosure(false);
+    return { isOpen, open, close };
+  };
 
   return {
     reopenTable: useReopenTable(),
@@ -29,5 +33,6 @@ export function useModals() {
     printCourse: usePrintCourse(),
     printBill: usePrintBill(),
     closeAndSendTable: useCloseTable(),
+    newCustomItem: useNewCustomItem(),
   };
 }

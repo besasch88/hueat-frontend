@@ -7,7 +7,6 @@ export type ListTableInputDto = {
 };
 
 export type ListTableOutputDto = {
-  hasNext: boolean;
   totalCount: number;
   items: Table[];
 };

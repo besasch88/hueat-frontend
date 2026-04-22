@@ -31,7 +31,9 @@ import classes from './Order.module.css';
 
 import { getOrderActions } from './OrderActionsData';
 import { OrderCourseNavigationComponent } from './OrderCourseNavigationComponent';
+import { OrderCustomItemComponent } from './OrderCustomItemComponent';
 import { OrderItemComponent } from './OrderItemComponent';
+import { OrderItemNewModalComponent } from './OrderItemNewModalComponent';
 import { useModals } from './OrderModals';
 import { orderFinalPrice } from './OrderUtils';
 
@@ -171,6 +173,10 @@ export function OrderPage() {
         modals.closeAndSendTable.open();
         break;
     }
+  };
+
+  const onCustomItemClick = () => {
+    modals.newCustomItem.open();
   };
 
   useEffect(() => {
@@ -400,6 +406,21 @@ export function OrderPage() {
     setOrder(updatedOrder);
   };
 
+  const onAddCustomItem = (o: Order, i: MenuItem) => {
+    if (!menu) return;
+    const updatedMenu = {
+      ...menu,
+    };
+    const categoryIndex = updatedMenu.categories.findIndex((x) => i.menuCategoryId == x.id);
+    if (categoryIndex >= 0) {
+      // Set empty options by default for custom items
+      i['options'] = [];
+      updatedMenu.categories[categoryIndex].items.push(i);
+      setMenu(updatedMenu);
+    }
+    onAddItemQuantity(o, i.id);
+  };
+
   // Content
   return (
     <AuthGuard>
@@ -491,6 +512,7 @@ export function OrderPage() {
                     />
                   );
                 })}
+                {canEdit() && <OrderCustomItemComponent onClick={onCustomItemClick} />}
               </StackList>
             </Grid.Col>
             {!isAnyModalOpen() && !isTargetOutside() && (
@@ -594,6 +616,22 @@ export function OrderPage() {
                 order={order}
                 onPrintDone={() => {
                   modals.printBill.close();
+                }}
+              />
+            </Modal>
+            <Modal
+              centered
+              withCloseButton
+              opened={modals.newCustomItem.isOpen}
+              onClose={modals.newCustomItem.close}
+              title={t('addCustomItem').toUpperCase()}
+            >
+              <OrderItemNewModalComponent
+                table={table}
+                menuCategory={currentCategory}
+                onAddCustomItem={(i) => {
+                  modals.newCustomItem.close();
+                  onAddCustomItem(order, i);
                 }}
               />
             </Modal>

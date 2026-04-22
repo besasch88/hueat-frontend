@@ -1,7 +1,6 @@
 import { MenuCategory } from '@entities/menuCategory';
 
 export type ListMenuCategoryOutputDto = {
-  hasNext: boolean;
   totalCount: number;
   items: MenuCategory[];
 };

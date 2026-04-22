@@ -5,7 +5,6 @@ export type ListMenuOptionInputDto = {
 };
 
 export type ListMenuOptionOutputDto = {
-  hasNext: boolean;
   totalCount: number;
   items: MenuOption[];
 };
@@ -21,6 +20,7 @@ export type GetMenuOptionOutputDto = {
 export type CreateMenuOptionInputDto = {
   menuItemId: string;
   title: string;
+  titleDisplay: string;
 };
 
 export type CreateMenuOptionOutputDto = {
@@ -38,6 +38,7 @@ export type DeleteMenuOptionOutputDto = {
 export type UpdateMenuOptionInputDto = {
   id: string;
   title?: string;
+  titleDisplay?: string;
   active?: boolean;
   inside?: boolean;
   outside?: boolean;

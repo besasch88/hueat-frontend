@@ -5,7 +5,6 @@ export type ListMenuItemInputDto = {
 };
 
 export type ListMenuItemOutputDto = {
-  hasNext: boolean;
   totalCount: number;
   items: MenuItem[];
 };
@@ -21,6 +20,16 @@ export type GetMenuItemOutputDto = {
 export type CreateMenuItemInputDto = {
   menuCategoryId: string;
   title: string;
+  titleDisplay: string;
+};
+
+export type CreateMenuCustomItemInputDto = {
+  tableId: string;
+  menuCategoryId: string;
+  title: string;
+  titleDisplay: string;
+  price: number;
+  printerId: string;
 };
 
 export type CreateMenuItemOutputDto = {
@@ -38,6 +47,7 @@ export type DeleteMenuItemOutputDto = {
 export type UpdateMenuItemInputDto = {
   id: string;
   title?: string;
+  titleDisplay?: string;
   active?: boolean;
   inside?: boolean;
   outside?: boolean;

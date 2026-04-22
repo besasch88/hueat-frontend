@@ -98,5 +98,10 @@ export const itTranslations = {
   takeawayMyTakeawayMenu: 'I MIEI ASPORTO',
   takeawayOtherTakeawayMenu: 'ALTRI ASPORTO',
   rememberAlert: 'COPERTI NON SEGNATI',
-  notePlaceholder: 'AGGIUNGI NOTA...',
+  notePlaceholder: 'AGGIUNGI UNA NOTA',
+  addCustomItem: 'AGGIUNGI VOCE LIBERA',
+  menuItemTitleAlreadyInUse: 'Voce di menu già in uso',
+  menuCustomItemTitlePlaceholder: 'Inserisci nome',
+  menuCustomItemPrinterPlaceholder: 'Seleziona area per stampa',
+  menuCustomItemPricePlaceholder: 'Prezzo',
 };

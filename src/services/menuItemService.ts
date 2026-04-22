@@ -9,6 +9,7 @@ import {
   UpdateMenuItemOutputDto,
   GetMenuItemInputDto,
   GetMenuItemOutputDto,
+  CreateMenuCustomItemInputDto,
 } from '@dtos/menuItemDto';
 import { Method } from './api.type';
 import { callAuthApi } from './authApi';
@@ -44,6 +45,23 @@ export const menuItemService = {
     const response = await callAuthApi(`/api/v1/menu/categories/${input.menuCategoryId}/items`, Method.POST, input);
     if (!response) {
       throw new Error('menu-item-create-failed');
+    }
+    if (!response.ok) {
+      const data = await response.json();
+      throw new Error(data.errors[0]);
+    }
+    const data = await response.json();
+    return data;
+  },
+
+  async createMenuCustomItem(input: CreateMenuCustomItemInputDto): Promise<CreateMenuItemOutputDto> {
+    const response = await callAuthApi(
+      `/api/v1/menu/tables/${input.tableId}/categories/${input.menuCategoryId}/items`,
+      Method.POST,
+      input
+    );
+    if (!response) {
+      throw new Error('menu-custom-item-create-failed');
     }
     if (!response.ok) {
       const data = await response.json();

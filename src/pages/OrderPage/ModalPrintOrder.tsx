@@ -106,7 +106,9 @@ export function ModalPrintOrder({ table, menu, order, course, onPrintDone }: Mod
             {note && (
               <>
                 <br />
-                <i style={{ fontSize: '0.8em' }}>- {note}</i>
+                <i style={{ fontSize: '0.8em' }}>
+                  <em>*</em> {note}
+                </i>
               </>
             )}
           </Text>
