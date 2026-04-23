@@ -10,7 +10,7 @@ import { Order } from '@entities/order';
 import { OrderCourse } from '@entities/orderCourse';
 import { Table } from '@entities/table';
 import { AuthGuard } from '@guards/AuthGuard';
-import { Alert, Flex, Grid, Group, Loader, Modal, SegmentedControl, Text } from '@mantine/core';
+import { Alert, AlertProps, Flex, Grid, Group, Loader, Modal, SegmentedControl, Text } from '@mantine/core';
 import { menuService } from '@services/menuService';
 import { orderService } from '@services/orderService';
 import { tableService } from '@services/tableService';
@@ -231,8 +231,15 @@ export function OrderPage() {
     return a;
   };
 
-  const hasAtLeastOneCover = (o: Order): boolean => {
-    return o.courses.some((c) => c.items.some((i) => i.menuItemId === '37023186-295f-4736-94a2-b0cb19dad8b2'));
+  const getFirstMissingMenuItemInOrder = (m: Menu, o: Order, t: Table): MenuItem | undefined => {
+    // Find all mandatory items based on inside or outside menu
+    const mandatoryMenuItems = m.categories.flatMap((c) =>
+      c.items
+        .filter((i) => (t.inside && i.mandatoryForInside) || (!t.inside && i.mandatoryForOutside))
+        .map((i) => ({ ...i, categoryTitle: c.titleDisplay }))
+    );
+    const orderedItemIds = new Set(o.courses.flatMap((c) => c.items.map((i) => i.menuItemId)));
+    return mandatoryMenuItems.find((i) => !orderedItemIds.has(i.id));
   };
 
   const canEdit = () => {
@@ -421,6 +428,21 @@ export function OrderPage() {
     onAddItemQuantity(o, i.id);
   };
 
+  const getMissingAlert = (table: Table, menu: Menu, order: Order): AlertProps | undefined => {
+    const missingItem = !table.close && getFirstMissingMenuItemInOrder(menu, order, table);
+    return missingItem
+      ? {
+          color: 'orange',
+          ta: 'center',
+          children: (
+            <Text fw={600} size="lg">
+              {missingItem.titleDisplay} {t('rememberAlert')}
+            </Text>
+          ),
+        }
+      : undefined;
+  };
+
   // Content
   return (
     <AuthGuard>
@@ -445,19 +467,7 @@ export function OrderPage() {
                   actions={getOrderActions(auth, t, table, (code: string) => {
                     onMenuActionClick(code);
                   })}
-                  alert={
-                    table.inside && !table.close && !hasAtLeastOneCover(order)
-                      ? {
-                          color: 'orange',
-                          ta: 'center',
-                          children: (
-                            <Text fw={600} size="lg">
-                              {t('rememberAlert')}
-                            </Text>
-                          ),
-                        }
-                      : undefined
-                  }
+                  alert={getMissingAlert(table, menu, order)}
                 />
               </Flex>
             </Grid.Col>

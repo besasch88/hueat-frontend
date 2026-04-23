@@ -9,6 +9,8 @@ export type MenuItem = {
   active: boolean;
   inside: boolean;
   outside: boolean;
+  mandatoryForInside: boolean;
+  mandatoryForOutside: boolean;
   price: number;
   createdAt: string;
   updatedAt: string;

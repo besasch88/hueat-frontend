@@ -97,7 +97,7 @@ export const itTranslations = {
   takeawayAddNew: 'CREA ASPORTO',
   takeawayMyTakeawayMenu: 'I MIEI ASPORTO',
   takeawayOtherTakeawayMenu: 'ALTRI ASPORTO',
-  rememberAlert: 'COPERTI NON SEGNATI',
+  rememberAlert: 'NON INDICATO',
   notePlaceholder: 'AGGIUNGI UNA NOTA',
   addCustomItem: 'AGGIUNGI VOCE LIBERA',
   menuItemTitleAlreadyInUse: 'Voce di menu già in uso',
