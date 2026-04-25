@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "additionalDirectories": [
+      "/Users/aimodelmatch/Desktop/hueat/frontend/src/pages"
+    ],
+    "allow": [
+      "Bash(npx tsc *)"
+    ]
+  }
+}

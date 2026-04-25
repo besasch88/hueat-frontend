@@ -14,6 +14,7 @@ import { MenuCategoryPage } from '@pages/MenuCategoryPage/MenuCategoryPage';
 import { MenuItemPage } from '@pages/MenuItemPage/MenuItemPage';
 import { MenuOptionPage } from '@pages/MenuOptionPage/MenuOptionPage';
 import { OrderPage } from '@pages/OrderPage/OrderPage';
+import { PrinterPage } from '@pages/PrinterPage/PrinterPage';
 import { StatisticsPage } from '@pages/StatisticsPage/StatisticsPage';
 import { TableListPage } from '@pages/TableListPage/TableListPage';
 import { TakeawayListPage } from '@pages/TakeawayListPage/TakeawayListPage';
@@ -44,6 +45,7 @@ export function App() {
               <Route path="/menu/categories" element={<MenuCategoryPage />} />
               <Route path="/menu/categories/:menuCategoryId" element={<MenuItemPage />} />
               <Route path="/menu/items/:menuItemId" element={<MenuOptionPage />} />
+              <Route path="/printers" element={<PrinterPage />} />
               <Route path="/statistics" element={<StatisticsPage />} />
               <Route path="/logout" element={<LogoutPage />} />
 

@@ -218,6 +218,7 @@ export function StatisticsPage() {
                         closeDeleteModal();
                         refetchStatistics();
                       }}
+                      onClose={closeDeleteModal}
                     />
                   )}
                 </Modal.Body>

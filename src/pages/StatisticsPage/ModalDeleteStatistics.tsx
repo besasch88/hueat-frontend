@@ -1,4 +1,4 @@
-import { Box, Button, Center, Text } from '@mantine/core';
+import { Box, Button, Center, Group, Text } from '@mantine/core';
 import { statisticsService } from '@services/statisticsService';
 import { IconTrash } from '@tabler/icons-react';
 import { getErrorMessage } from '@utils/errUtils';
@@ -8,9 +8,10 @@ import { useNavigate } from 'react-router-dom';
 
 export interface ModalDeleteStatisticsProps {
   onDeleted: () => void;
+  onClose: () => void;
 }
 
-export function ModalDeleteStatistics({ onDeleted }: ModalDeleteStatisticsProps) {
+export function ModalDeleteStatistics({ onDeleted, onClose }: ModalDeleteStatisticsProps) {
   const navigate = useNavigate();
   const { t } = useTranslation();
 
@@ -38,22 +39,26 @@ export function ModalDeleteStatistics({ onDeleted }: ModalDeleteStatisticsProps)
   return (
     <Box>
       <Center p={30}>
-        <Text fz={18} ta={'center'}>
+        <Text fz={16} ta={'center'}>
           {t('deleteStatisticsConfirm')}
         </Text>
       </Center>
-      <Button
-        onClick={() => handleDeleteSubmit()}
-        size="lg"
-        variant="filled"
-        fullWidth
-        loading={apiLoading}
-        loaderProps={{ type: 'dots' }}
-        color="red"
-        leftSection={<IconTrash size={28} />}
-      >
-        {t('deleteStatisticsButton')}
-      </Button>
+      <Group grow>
+        <Button variant="default" size="lg" disabled={apiLoading} onClick={onClose}>
+          {t('printerDeleteCancel')}
+        </Button>
+        <Button
+          onClick={() => handleDeleteSubmit()}
+          size="lg"
+          variant="filled"
+          loading={apiLoading}
+          loaderProps={{ type: 'dots' }}
+          color="red"
+          leftSection={<IconTrash size={28} />}
+        >
+          {t('menuDelete')}
+        </Button>
+      </Group>
     </Box>
   );
 }
