@@ -21,6 +21,7 @@ export type CreateMenuOptionInputDto = {
   menuItemId: string;
   title: string;
   titleDisplay: string;
+  price: number;
 };
 
 export type CreateMenuOptionOutputDto = {

@@ -1,9 +1,9 @@
 import { MenuItem } from '@entities/menuItem';
 import { MenuOption } from '@entities/menuOption';
 import { OrderCourse } from '@entities/orderCourse';
-import { Badge, Button, TextInput } from '@mantine/core';
+import { ActionIcon, Badge, Button, TextInput } from '@mantine/core';
 import { useDebouncedValue, useLongPress } from '@mantine/hooks';
-import { IconChevronDown, IconChevronUp, IconMinus, IconPlus } from '@tabler/icons-react';
+import { IconChevronDown, IconChevronUp, IconMinus, IconPlus, IconX } from '@tabler/icons-react';
 import { forwardRef, useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { OrderOptionComponent } from './OrderOptionComponent';
@@ -177,6 +177,13 @@ function OrderItemComponentFunc(
                 placeholder={t('notePlaceholder')}
                 value={localNote}
                 onChange={(e) => setLocalNote(e.currentTarget.value.toUpperCase())}
+                rightSection={
+                  localNote ? (
+                    <ActionIcon variant="subtle" color="gray" onClick={() => setLocalNote('')}>
+                      <IconX size={16} />
+                    </ActionIcon>
+                  ) : null
+                }
               />
             )}
           </>

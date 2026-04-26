@@ -9,6 +9,8 @@ export type MenuItem = {
   active: boolean;
   inside: boolean;
   outside: boolean;
+  printerInsideId: string | null;
+  printerOutsideId: string | null;
   mandatoryForInside: boolean;
   mandatoryForOutside: boolean;
   price: number;

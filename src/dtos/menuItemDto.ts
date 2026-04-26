@@ -21,6 +21,7 @@ export type CreateMenuItemInputDto = {
   menuCategoryId: string;
   title: string;
   titleDisplay: string;
+  price: number;
 };
 
 export type CreateMenuCustomItemInputDto = {
@@ -51,6 +52,8 @@ export type UpdateMenuItemInputDto = {
   active?: boolean;
   inside?: boolean;
   outside?: boolean;
+  printerInsideId?: string | null;
+  printerOutsideId?: string | null;
   position?: number;
   price?: number;
 };

@@ -36,7 +36,8 @@ export function PrinterEditModalComponent({ isOpen, printer, onClose, onUpdated 
     if (printer) {
       form.setValues({ title: printer.title, url: printer.url });
     }
-  }, [printer, form]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [printer]);
 
   const onModalClose = () => {
     form.reset();

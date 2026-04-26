@@ -3,8 +3,8 @@ import { SwitchOnOff } from '@components/SwitchOnOff/SwitchOnOff';
 import { useAuth } from '@context/AuthContext';
 import { MenuItem } from '@entities/menuItem';
 import { MenuOption } from '@entities/menuOption';
-import { ActionIcon, Group, Menu } from '@mantine/core';
-import { IconArrowDown, IconArrowUp, IconBasket, IconDots, IconEdit, IconTrash } from '@tabler/icons-react';
+import { ActionIcon, Badge, Group, Menu } from '@mantine/core';
+import { IconArrowDown, IconArrowUp, IconDots, IconEdit, IconTrash } from '@tabler/icons-react';
 import { useTranslation } from 'react-i18next';
 
 export interface MenuOptionComponentProps {
@@ -13,6 +13,10 @@ export interface MenuOptionComponentProps {
   canMoveUp: boolean;
   canMoveDown: boolean;
   onSwitch: (menuOption: MenuOption, newValue: boolean) => void;
+  onMenuOptionUp: (menuOption: MenuOption) => void;
+  onMenuOptionDown: (menuOption: MenuOption) => void;
+  onMenuOptionUpdate: (menuOption: MenuOption) => void;
+  onMenuOptionDelete: (menuOption: MenuOption) => void;
 }
 
 export function MenuOptionComponent({
@@ -21,40 +25,49 @@ export function MenuOptionComponent({
   canMoveUp,
   canMoveDown,
   onSwitch,
+  onMenuOptionUp,
+  onMenuOptionDown,
+  onMenuOptionUpdate,
+  onMenuOptionDelete,
 }: MenuOptionComponentProps) {
-  // Services
   const auth = useAuth();
   const { t } = useTranslation();
 
-  // Utilities
   const isReadOnly = !auth.hasPermissionTo('write-menu');
   const price = (menuOption.price / 100).toFixed(2);
-  const isOnlyOutside = menuOption.outside && !menuOption.inside;
   let btnText = menuOption.title;
   if (menuOption.title !== menuItem.title && menuOption.title.startsWith(menuItem.title)) {
     btnText = menuOption.title.slice(menuItem.title.length).trim();
   }
   btnText = `${btnText} (${price}€)`;
 
-  // Content
+  const channelBadges =
+    menuOption.inside || menuOption.outside ? (
+      <Group gap={4} wrap="nowrap">
+        {menuOption.inside && (
+          <Badge size="xs" variant="light" circle>
+            T
+          </Badge>
+        )}
+        {menuOption.outside && (
+          <Badge size="xs" variant="light" color="orange" circle>
+            A
+          </Badge>
+        )}
+      </Group>
+    ) : undefined;
+
   return (
     <Group wrap="nowrap" gap={6}>
-      <MenuButton
-        reference={menuItem}
-        rightSection={isOnlyOutside && <IconBasket color="var(--mantine-primary-color-6)"></IconBasket>}
-        clickable={false}
-        text={btnText}
-      ></MenuButton>
+      <MenuButton reference={menuOption} rightSection={channelBadges} clickable={false} text={btnText} />
       <SwitchOnOff
         readOnly={isReadOnly}
         reference={menuOption}
         checked={menuOption.active}
-        onChange={(reference, checked) => {
-          onSwitch(reference, checked);
-        }}
+        onChange={(reference, checked) => onSwitch(reference, checked)}
       />
       {!isReadOnly && (
-        <Menu>
+        <Menu shadow="lg" width={200} position="bottom-end" withArrow>
           <Menu.Target>
             <ActionIcon variant="outline">
               <IconDots stroke={1.5} />
@@ -62,19 +75,19 @@ export function MenuOptionComponent({
           </Menu.Target>
           <Menu.Dropdown>
             {canMoveUp && (
-              <Menu.Item leftSection={<IconArrowUp size={14} />} onClick={() => alert('DA IMPLEMENTARE')}>
+              <Menu.Item leftSection={<IconArrowUp size={14} />} onClick={() => onMenuOptionUp(menuOption)}>
                 {t('menuMoveUp')}
               </Menu.Item>
             )}
             {canMoveDown && (
-              <Menu.Item leftSection={<IconArrowDown size={14} />} onClick={() => alert('DA IMPLEMENTARE')}>
+              <Menu.Item leftSection={<IconArrowDown size={14} />} onClick={() => onMenuOptionDown(menuOption)}>
                 {t('menuMoveDown')}
               </Menu.Item>
             )}
-            <Menu.Item leftSection={<IconEdit size={14} />} onClick={() => alert('DA IMPLEMENTARE')}>
+            <Menu.Item leftSection={<IconEdit size={14} />} onClick={() => onMenuOptionUpdate(menuOption)}>
               {t('menuEdit')}
             </Menu.Item>
-            <Menu.Item leftSection={<IconTrash size={14} color="red" />} onClick={() => alert('DA IMPLEMENTARE')}>
+            <Menu.Item leftSection={<IconTrash size={14} color="red" />} onClick={() => onMenuOptionDelete(menuOption)}>
               {t('menuDelete')}
             </Menu.Item>
           </Menu.Dropdown>

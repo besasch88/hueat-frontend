@@ -1,8 +1,8 @@
 import { MenuOption } from '@entities/menuOption';
 import { OrderCourse } from '@entities/orderCourse';
-import { Badge, Box, Button, TextInput } from '@mantine/core';
+import { ActionIcon, Badge, Box, Button, TextInput } from '@mantine/core';
 import { useDebouncedValue, useLongPress } from '@mantine/hooks';
-import { IconMinus, IconPlus } from '@tabler/icons-react';
+import { IconMinus, IconPlus, IconX } from '@tabler/icons-react';
 import { useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -145,6 +145,13 @@ export function OrderOptionComponent({
           placeholder={t('notePlaceholder')}
           value={localNote}
           onChange={(e) => setLocalNote(e.currentTarget.value.toUpperCase())}
+          rightSection={
+            localNote ? (
+              <ActionIcon variant="subtle" color="gray" onClick={() => setLocalNote('')}>
+                <IconX size={16} />
+              </ActionIcon>
+            ) : null
+          }
         />
       )}
     </Box>

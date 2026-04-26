@@ -54,7 +54,7 @@ export const menuOptionService = {
   },
 
   async deleteMenuOption(input: DeleteMenuOptionInputDto): Promise<DeleteMenuOptionOutputDto> {
-    const response = await callAuthApi(`/api/v1/menu/option/${input.id}`, Method.DELETE);
+    const response = await callAuthApi(`/api/v1/menu/options/${input.id}`, Method.DELETE);
     if (!response) {
       throw new Error('menu-item-option-delete-failed');
     }
