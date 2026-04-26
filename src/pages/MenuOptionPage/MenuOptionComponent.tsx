@@ -45,8 +45,8 @@ export function MenuOptionComponent({
     menuOption.inside || menuOption.outside ? (
       <Group gap={4} wrap="nowrap">
         {menuOption.inside && (
-          <Badge size="xs" variant="light" circle>
-            T
+          <Badge size="xs" variant="light" color="violet" circle>
+            I
           </Badge>
         )}
         {menuOption.outside && (
