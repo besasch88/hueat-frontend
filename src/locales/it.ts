@@ -121,6 +121,12 @@ export const itTranslations = {
   menuItemInsertTitle: 'Nome per la stampa',
   menuItemInsertTitleDisplay: 'Nome per il display',
   menuItemInsertPrice: 'Prezzo (€)',
+  channelInsideShort: 'I',
+  channelOutsideShort: 'A',
+  titlePrintHint:
+    'Nome usato per la stampa sulle comande e sul pre-conto. Si consiglia sempre il nome completo del piatto con eventuale variante',
+  titleDisplayHint:
+    'Nome mostrato solo nel menù digitale, sul dispotivo. Nelle varianti, si consiglia solo di indicare cosa cambia e non tutta la voce',
   menuItemInsideLabel: 'Interno',
   menuItemInsidePrinterPlaceholder: 'Stampante per interno',
   menuItemOutsideLabel: 'Asporto',

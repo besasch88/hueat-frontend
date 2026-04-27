@@ -1,9 +1,17 @@
 import { SwitchOnOff } from '@components/SwitchOnOff/SwitchOnOff';
 import { MenuOption } from '@entities/menuOption';
-import { Button, Group, Modal, NumberInput, Paper, Stack, Text, TextInput } from '@mantine/core';
+import { ActionIcon, Button, Group, Modal, NumberInput, Paper, Popover, Stack, Text, TextInput } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { menuOptionService } from '@services/menuOptionService';
-import { IconBasket, IconCurrencyEuro, IconDeviceFloppy, IconEye, IconLayout2, IconPrinter } from '@tabler/icons-react';
+import {
+  IconBasket,
+  IconCurrencyEuro,
+  IconDeviceFloppy,
+  IconEye,
+  IconHelpCircle,
+  IconLayout2,
+  IconPrinter,
+} from '@tabler/icons-react';
 import { getErrorMessage } from '@utils/errUtils';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -99,6 +107,19 @@ export function MenuOptionEditModalComponent({
             disabled={apiLoading}
             leftSection={<IconPrinter size={22} />}
             placeholder={t('menuOptionInsertTitle')}
+            rightSectionPointerEvents="all"
+            rightSection={
+              <Popover width={220} position="bottom-end" withArrow shadow="md" zIndex={400}>
+                <Popover.Target>
+                  <ActionIcon variant="subtle" color="gray" size="sm" tabIndex={-1}>
+                    <IconHelpCircle size={16} />
+                  </ActionIcon>
+                </Popover.Target>
+                <Popover.Dropdown>
+                  <Text size="sm">{t('titlePrintHint')}</Text>
+                </Popover.Dropdown>
+              </Popover>
+            }
             key={form.key('title')}
             {...form.getInputProps('title')}
             onChange={(e) => form.setFieldValue('title', e.currentTarget.value.toUpperCase())}
@@ -111,6 +132,19 @@ export function MenuOptionEditModalComponent({
             disabled={apiLoading}
             leftSection={<IconEye size={22} />}
             placeholder={t('menuOptionInsertTitleDisplay')}
+            rightSectionPointerEvents="all"
+            rightSection={
+              <Popover width={220} position="bottom-end" withArrow shadow="md" zIndex={400}>
+                <Popover.Target>
+                  <ActionIcon variant="subtle" color="gray" size="sm" tabIndex={-1}>
+                    <IconHelpCircle size={16} />
+                  </ActionIcon>
+                </Popover.Target>
+                <Popover.Dropdown>
+                  <Text size="xs">{t('titleDisplayHint')}</Text>
+                </Popover.Dropdown>
+              </Popover>
+            }
             key={form.key('titleDisplay')}
             {...form.getInputProps('titleDisplay')}
             onChange={(e) => form.setFieldValue('titleDisplay', e.currentTarget.value.toUpperCase())}

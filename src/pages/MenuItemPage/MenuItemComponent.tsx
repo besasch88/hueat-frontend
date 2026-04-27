@@ -47,12 +47,12 @@ export function MenuItemComponent({
       <Group gap={4} wrap="nowrap">
         {menuItem.inside && (
           <Badge size="xs" variant="light" color="violet" circle>
-            I
+            {t('channelInsideShort')}
           </Badge>
         )}
         {menuItem.outside && (
           <Badge size="xs" variant="light" color="orange" circle>
-            A
+            {t('channelOutsideShort')}
           </Badge>
         )}
       </Group>
@@ -69,7 +69,13 @@ export function MenuItemComponent({
       />
       <SwitchOnOff readOnly={isReadOnly} reference={menuItem} checked={menuItem.active} onChange={onSwitch} />
       {!isReadOnly && (
-        <Menu shadow="lg" width={200} position="bottom-end" withArrow>
+        <Menu
+          shadow="lg"
+          width={220}
+          position="bottom-end"
+          withArrow
+          styles={{ item: { fontSize: 15, paddingBlock: 10 } }}
+        >
           <Menu.Target>
             <ActionIcon variant="outline">
               <IconDots stroke={1.5} />
@@ -77,22 +83,22 @@ export function MenuItemComponent({
           </Menu.Target>
           <Menu.Dropdown>
             {canMoveUp && (
-              <Menu.Item leftSection={<IconArrowUp size={14} />} onClick={() => onMenuItemUp(menuItem)}>
+              <Menu.Item leftSection={<IconArrowUp size={16} />} onClick={() => onMenuItemUp(menuItem)}>
                 {t('menuMoveUp')}
               </Menu.Item>
             )}
             {canMoveDown && (
-              <Menu.Item leftSection={<IconArrowDown size={14} />} onClick={() => onMenuItemDown(menuItem)}>
+              <Menu.Item leftSection={<IconArrowDown size={16} />} onClick={() => onMenuItemDown(menuItem)}>
                 {t('menuMoveDown')}
               </Menu.Item>
             )}
-            <Menu.Item leftSection={<IconEdit size={14} />} onClick={() => onMenuItemUpdate(menuItem)}>
+            <Menu.Item leftSection={<IconEdit size={16} />} onClick={() => onMenuItemUpdate(menuItem)}>
               {t('menuEdit')}
             </Menu.Item>
-            <Menu.Item leftSection={<IconPlus size={14} />} onClick={onMenuAddOptionClickHandler}>
+            <Menu.Item leftSection={<IconPlus size={16} />} onClick={onMenuAddOptionClickHandler}>
               {t('menuAddOption')}
             </Menu.Item>
-            <Menu.Item leftSection={<IconTrash size={14} color="red" />} onClick={() => onMenuItemDelete(menuItem)}>
+            <Menu.Item leftSection={<IconTrash size={16} color="red" />} onClick={() => onMenuItemDelete(menuItem)}>
               {t('menuDelete')}
             </Menu.Item>
           </Menu.Dropdown>

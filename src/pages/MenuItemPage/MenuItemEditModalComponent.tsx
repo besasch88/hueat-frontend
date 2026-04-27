@@ -1,7 +1,19 @@
 import { SwitchOnOff } from '@components/SwitchOnOff/SwitchOnOff';
 import { MenuItem } from '@entities/menuItem';
 import { Printer } from '@entities/printer';
-import { Button, Group, Modal, NumberInput, Paper, Select, Stack, Text, TextInput } from '@mantine/core';
+import {
+  ActionIcon,
+  Button,
+  Group,
+  Modal,
+  NumberInput,
+  Paper,
+  Popover,
+  Select,
+  Stack,
+  Text,
+  TextInput,
+} from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { menuItemService } from '@services/menuItemService';
 import { printerService } from '@services/printerService';
@@ -10,6 +22,7 @@ import {
   IconDeviceFloppy,
   IconDoorExit,
   IconEye,
+  IconHelpCircle,
   IconLayout2,
   IconPrinter,
 } from '@tabler/icons-react';
@@ -122,6 +135,19 @@ export function MenuItemEditModalComponent({ isOpen, menuItem, onClose, onUpdate
             disabled={apiLoading}
             leftSection={<IconPrinter size={22} />}
             placeholder={t('menuItemInsertTitle')}
+            rightSectionPointerEvents="all"
+            rightSection={
+              <Popover width={220} position="bottom-end" withArrow shadow="md" zIndex={400}>
+                <Popover.Target>
+                  <ActionIcon variant="subtle" color="gray" size="sm" tabIndex={-1}>
+                    <IconHelpCircle size={16} />
+                  </ActionIcon>
+                </Popover.Target>
+                <Popover.Dropdown>
+                  <Text size="sm">{t('titlePrintHint')}</Text>
+                </Popover.Dropdown>
+              </Popover>
+            }
             key={form.key('title')}
             {...form.getInputProps('title')}
             onChange={(e) => form.setFieldValue('title', e.currentTarget.value.toUpperCase())}
@@ -134,6 +160,19 @@ export function MenuItemEditModalComponent({ isOpen, menuItem, onClose, onUpdate
             disabled={apiLoading}
             leftSection={<IconEye size={22} />}
             placeholder={t('menuItemInsertTitleDisplay')}
+            rightSectionPointerEvents="all"
+            rightSection={
+              <Popover width={220} position="bottom-end" withArrow shadow="md" zIndex={400}>
+                <Popover.Target>
+                  <ActionIcon variant="subtle" color="gray" size="sm" tabIndex={-1}>
+                    <IconHelpCircle size={16} />
+                  </ActionIcon>
+                </Popover.Target>
+                <Popover.Dropdown>
+                  <Text size="xs">{t('titleDisplayHint')}</Text>
+                </Popover.Dropdown>
+              </Popover>
+            }
             key={form.key('titleDisplay')}
             {...form.getInputProps('titleDisplay')}
             onChange={(e) => form.setFieldValue('titleDisplay', e.currentTarget.value.toUpperCase())}
