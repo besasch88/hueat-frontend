@@ -1,33 +1,29 @@
-import { Printer } from '@entities/printer';
+import { MenuCategory } from '@entities/menuCategory';
 import { Button, Modal, TextInput } from '@mantine/core';
 import { useForm } from '@mantine/form';
-import { printerService } from '@services/printerService';
-import { IconCirclePlus, IconMapPin, IconPrinter } from '@tabler/icons-react';
+import { menuCategoryService } from '@services/menuCategoryService';
+import { IconCirclePlus, IconTag } from '@tabler/icons-react';
 import { getErrorMessage } from '@utils/errUtils';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
-export interface PrinterNewModalComponentProps {
+export interface MenuCategoryNewModalComponentProps {
   isOpen: boolean;
   onClose: () => void;
-  onCreated: (printer: Printer) => void;
+  onCreated: (menuCategory: MenuCategory) => void;
 }
 
-export function PrinterNewModalComponent({ isOpen, onClose, onCreated }: PrinterNewModalComponentProps) {
+export function MenuCategoryNewModalComponent({ isOpen, onClose, onCreated }: MenuCategoryNewModalComponentProps) {
   const navigate = useNavigate();
   const { t } = useTranslation();
 
   const [apiLoading, setApiLoading] = useState(false);
 
   const form = useForm({
-    initialValues: {
-      title: '',
-      url: '',
-    },
+    initialValues: { title: '' },
     validate: {
       title: (value: string) => (value.trim().length !== 0 ? null : t('fieldIsRequired')),
-      url: (value: string) => (value.trim().length !== 0 ? null : t('fieldIsRequired')),
     },
   });
 
@@ -39,9 +35,9 @@ export function PrinterNewModalComponent({ isOpen, onClose, onCreated }: Printer
   const handleSubmit = async (values: typeof form.values) => {
     try {
       setApiLoading(true);
-      const data = await printerService.createPrinter({
+      const data = await menuCategoryService.createMenuCategory({
         title: values.title.trim(),
-        url: values.url.trim(),
+        titleDisplay: values.title.trim(),
       });
       form.reset();
       onCreated(data.item);
@@ -60,7 +56,7 @@ export function PrinterNewModalComponent({ isOpen, onClose, onCreated }: Printer
   };
 
   return (
-    <Modal centered withCloseButton title={t('printerAddNew')} opened={isOpen} onClose={onModalClose}>
+    <Modal centered withCloseButton title={t('menuCategoryNewTitle')} opened={isOpen} onClose={onModalClose}>
       {isOpen && (
         <form onSubmit={form.onSubmit(handleSubmit)}>
           <TextInput
@@ -69,22 +65,12 @@ export function PrinterNewModalComponent({ isOpen, onClose, onCreated }: Printer
             autoComplete="off"
             withAsterisk
             disabled={apiLoading}
-            leftSection={<IconMapPin size={22} />}
-            placeholder={t('printerInsertTitle')}
+            leftSection={<IconTag size={22} />}
+            placeholder={t('menuCategoryInsertTitle')}
             key={form.key('title')}
             {...form.getInputProps('title')}
-            mt={'md'}
-          />
-          <TextInput
-            size="lg"
-            autoComplete="off"
-            withAsterisk
-            disabled={apiLoading}
-            leftSection={<IconPrinter size={22} />}
-            placeholder={t('printerInsertUrl')}
-            key={form.key('url')}
-            {...form.getInputProps('url')}
-            mt={'md'}
+            onChange={(e) => form.setFieldValue('title', e.currentTarget.value.toUpperCase())}
+            mt="md"
             mb="lg"
           />
           <Button
@@ -95,7 +81,7 @@ export function PrinterNewModalComponent({ isOpen, onClose, onCreated }: Printer
             loaderProps={{ type: 'dots' }}
             leftSection={<IconCirclePlus size={28} />}
           >
-            {t('printerAdd')}
+            {t('menuCategoryAdd')}
           </Button>
         </form>
       )}

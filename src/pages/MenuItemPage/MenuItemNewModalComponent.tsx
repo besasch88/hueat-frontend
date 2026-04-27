@@ -2,7 +2,7 @@ import { MenuItem } from '@entities/menuItem';
 import { ActionIcon, Button, Modal, NumberInput, Popover, Text, TextInput } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { menuItemService } from '@services/menuItemService';
-import { IconCirclePlus, IconCurrencyEuro, IconEye, IconHelpCircle, IconPrinter } from '@tabler/icons-react';
+import { IconCirclePlus, IconCurrencyEuro, IconEye, IconHelpCircle, IconMapPin } from '@tabler/icons-react';
 import { getErrorMessage } from '@utils/errUtils';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -79,7 +79,7 @@ export function MenuItemNewModalComponent({
             autoComplete="off"
             withAsterisk
             disabled={apiLoading}
-            leftSection={<IconPrinter size={22} />}
+            leftSection={<IconMapPin size={22} />}
             placeholder={t('menuItemInsertTitle')}
             rightSectionPointerEvents="all"
             rightSection={

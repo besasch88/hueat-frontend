@@ -53,7 +53,7 @@ export const menuCategoryService = {
   },
 
   async deleteMenuCategory(input: DeleteMenuCategoryInputDto): Promise<DeleteMenuCategoryOutputDto> {
-    const response = await callAuthApi(`/api/v1/menuCategorys/${input.id}`, Method.DELETE);
+    const response = await callAuthApi(`/api/v1/menu/categories/${input.id}`, Method.DELETE);
     if (!response) {
       throw new Error('menu-category-delete-failed');
     }

@@ -1,35 +1,27 @@
 import { SwitchOnOff } from '@components/SwitchOnOff/SwitchOnOff';
-import { MenuOption } from '@entities/menuOption';
-import { ActionIcon, Button, Group, Modal, NumberInput, Paper, Popover, Stack, Text, TextInput } from '@mantine/core';
+import { MenuCategory } from '@entities/menuCategory';
+import { Button, Group, Modal, Paper, Stack, Text, TextInput } from '@mantine/core';
 import { useForm } from '@mantine/form';
-import { menuOptionService } from '@services/menuOptionService';
-import {
-  IconBasket,
-  IconCurrencyEuro,
-  IconDeviceFloppy,
-  IconEye,
-  IconHelpCircle,
-  IconLayout2,
-  IconMapPin,
-} from '@tabler/icons-react';
+import { menuCategoryService } from '@services/menuCategoryService';
+import { IconDeviceFloppy, IconDoorExit, IconLayout2, IconTag } from '@tabler/icons-react';
 import { getErrorMessage } from '@utils/errUtils';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
-export interface MenuOptionEditModalComponentProps {
+export interface MenuCategoryEditModalComponentProps {
   isOpen: boolean;
-  menuOption: MenuOption | null;
+  menuCategory: MenuCategory | null;
   onClose: () => void;
-  onUpdated: (menuOption: MenuOption) => void;
+  onUpdated: (menuCategory: MenuCategory) => void;
 }
 
-export function MenuOptionEditModalComponent({
+export function MenuCategoryEditModalComponent({
   isOpen,
-  menuOption,
+  menuCategory,
   onClose,
   onUpdated,
-}: MenuOptionEditModalComponentProps) {
+}: MenuCategoryEditModalComponentProps) {
   const navigate = useNavigate();
   const { t } = useTranslation();
 
@@ -38,29 +30,24 @@ export function MenuOptionEditModalComponent({
   const form = useForm({
     initialValues: {
       title: '',
-      titleDisplay: '',
-      price: '' as number | string,
       inside: false,
       outside: false,
     },
     validate: {
       title: (value: string) => (value.trim().length !== 0 ? null : t('fieldIsRequired')),
-      titleDisplay: (value: string) => (value.trim().length !== 0 ? null : t('fieldIsRequired')),
     },
   });
 
   useEffect(() => {
-    if (menuOption) {
+    if (menuCategory) {
       form.setValues({
-        title: menuOption.title,
-        titleDisplay: menuOption.titleDisplay,
-        price: (menuOption.price / 100).toString(),
-        inside: menuOption.inside,
-        outside: menuOption.outside,
+        title: menuCategory.title,
+        inside: menuCategory.inside,
+        outside: menuCategory.outside,
       });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [menuOption]);
+  }, [menuCategory]);
 
   const onModalClose = () => {
     form.reset();
@@ -68,14 +55,13 @@ export function MenuOptionEditModalComponent({
   };
 
   const handleSubmit = async (values: typeof form.values) => {
-    if (!menuOption) return;
+    if (!menuCategory) return;
     try {
       setApiLoading(true);
-      const data = await menuOptionService.updateMenuOption({
-        id: menuOption.id,
+      const data = await menuCategoryService.updateMenuCategory({
+        id: menuCategory.id,
         title: values.title.trim(),
-        titleDisplay: values.titleDisplay.trim(),
-        price: +values.price * 100,
+        titleDisplay: values.title.trim(),
         inside: values.inside,
         outside: values.outside,
       });
@@ -96,7 +82,7 @@ export function MenuOptionEditModalComponent({
   };
 
   return (
-    <Modal centered withCloseButton title={t('menuOptionEditTitle')} opened={isOpen} onClose={onModalClose}>
+    <Modal centered withCloseButton title={t('menuCategoryEditTitle')} opened={isOpen} onClose={onModalClose}>
       {isOpen && (
         <form onSubmit={form.onSubmit(handleSubmit)}>
           <TextInput
@@ -105,64 +91,11 @@ export function MenuOptionEditModalComponent({
             autoComplete="off"
             withAsterisk
             disabled={apiLoading}
-            leftSection={<IconMapPin size={22} />}
-            placeholder={t('menuOptionInsertTitle')}
-            rightSectionPointerEvents="all"
-            rightSection={
-              <Popover width={220} position="bottom-end" withArrow shadow="md" zIndex={400}>
-                <Popover.Target>
-                  <ActionIcon variant="subtle" color="gray" size="sm" tabIndex={-1}>
-                    <IconHelpCircle size={16} />
-                  </ActionIcon>
-                </Popover.Target>
-                <Popover.Dropdown>
-                  <Text size="sm">{t('titlePrintHint')}</Text>
-                </Popover.Dropdown>
-              </Popover>
-            }
+            leftSection={<IconTag size={22} />}
+            placeholder={t('menuCategoryInsertTitle')}
             key={form.key('title')}
             {...form.getInputProps('title')}
             onChange={(e) => form.setFieldValue('title', e.currentTarget.value.toUpperCase())}
-            mt="md"
-          />
-          <TextInput
-            size="lg"
-            autoComplete="off"
-            withAsterisk
-            disabled={apiLoading}
-            leftSection={<IconEye size={22} />}
-            placeholder={t('menuOptionInsertTitleDisplay')}
-            rightSectionPointerEvents="all"
-            rightSection={
-              <Popover width={220} position="bottom-end" withArrow shadow="md" zIndex={400}>
-                <Popover.Target>
-                  <ActionIcon variant="subtle" color="gray" size="sm" tabIndex={-1}>
-                    <IconHelpCircle size={16} />
-                  </ActionIcon>
-                </Popover.Target>
-                <Popover.Dropdown>
-                  <Text size="xs">{t('titleDisplayHint')}</Text>
-                </Popover.Dropdown>
-              </Popover>
-            }
-            key={form.key('titleDisplay')}
-            {...form.getInputProps('titleDisplay')}
-            onChange={(e) => form.setFieldValue('titleDisplay', e.currentTarget.value.toUpperCase())}
-            mt="md"
-          />
-          <NumberInput
-            size="lg"
-            autoComplete="off"
-            disabled={apiLoading}
-            leftSection={<IconCurrencyEuro size={22} />}
-            placeholder={t('menuOptionInsertPrice')}
-            decimalSeparator=","
-            decimalScale={2}
-            fixedDecimalScale
-            inputMode="decimal"
-            key={form.key('price')}
-            {...form.getInputProps('price')}
-            onChange={(value) => form.setFieldValue('price', value.toString())}
             mt="md"
           />
           <Stack gap="sm" mt="lg" mb="lg">
@@ -179,7 +112,7 @@ export function MenuOptionEditModalComponent({
                 <Group gap="sm">
                   <IconLayout2 size={22} color="var(--mantine-primary-color-6)" />
                   <Text size="md" fw={500}>
-                    {t('menuOptionInsideLabel')}
+                    {t('menuCategoryInsideLabel')}
                   </Text>
                 </Group>
                 <SwitchOnOff
@@ -201,9 +134,9 @@ export function MenuOptionEditModalComponent({
             >
               <Group justify="space-between" align="center">
                 <Group gap="sm">
-                  <IconBasket size={22} color="var(--mantine-primary-color-6)" />
+                  <IconDoorExit size={22} color="var(--mantine-primary-color-6)" />
                   <Text size="md" fw={500}>
-                    {t('menuOptionOutsideLabel')}
+                    {t('menuCategoryOutsideLabel')}
                   </Text>
                 </Group>
                 <SwitchOnOff

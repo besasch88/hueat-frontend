@@ -24,7 +24,7 @@ import {
   IconEye,
   IconHelpCircle,
   IconLayout2,
-  IconPrinter,
+  IconMapPin,
 } from '@tabler/icons-react';
 import { getErrorMessage } from '@utils/errUtils';
 import { useEffect, useState } from 'react';
@@ -133,7 +133,7 @@ export function MenuItemEditModalComponent({ isOpen, menuItem, onClose, onUpdate
             autoComplete="off"
             withAsterisk
             disabled={apiLoading}
-            leftSection={<IconPrinter size={22} />}
+            leftSection={<IconMapPin size={22} />}
             placeholder={t('menuItemInsertTitle')}
             rightSectionPointerEvents="all"
             rightSection={

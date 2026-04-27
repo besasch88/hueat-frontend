@@ -2,7 +2,7 @@ import { Printer } from '@entities/printer';
 import { Button, Modal, TextInput } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { printerService } from '@services/printerService';
-import { IconDeviceFloppy, IconLink, IconPrinter } from '@tabler/icons-react';
+import { IconDeviceFloppy, IconMapPin, IconPrinter } from '@tabler/icons-react';
 import { getErrorMessage } from '@utils/errUtils';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -79,7 +79,7 @@ export function PrinterEditModalComponent({ isOpen, printer, onClose, onUpdated 
             autoComplete="off"
             withAsterisk
             disabled={apiLoading}
-            leftSection={<IconPrinter size={22} />}
+            leftSection={<IconMapPin size={22} />}
             placeholder={t('printerInsertTitle')}
             key={form.key('title')}
             {...form.getInputProps('title')}
@@ -90,7 +90,7 @@ export function PrinterEditModalComponent({ isOpen, printer, onClose, onUpdated 
             autoComplete="off"
             withAsterisk
             disabled={apiLoading}
-            leftSection={<IconLink size={22} />}
+            leftSection={<IconPrinter size={22} />}
             placeholder={t('printerInsertUrl')}
             key={form.key('url')}
             {...form.getInputProps('url')}

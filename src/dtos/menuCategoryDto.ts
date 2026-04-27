@@ -15,6 +15,7 @@ export type GetMenuCategoryOutputDto = {
 
 export type CreateMenuCategoryInputDto = {
   title: string;
+  titleDisplay: string;
 };
 
 export type CreateMenuCategoryOutputDto = {
@@ -32,6 +33,7 @@ export type DeleteMenuCategoryOutputDto = {
 export type UpdateMenuCategoryInputDto = {
   id: string;
   title?: string;
+  titleDisplay?: string;
   active?: boolean;
   inside?: boolean;
   outside?: boolean;

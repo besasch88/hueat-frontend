@@ -10,7 +10,7 @@ import { Order } from '@entities/order';
 import { OrderCourse } from '@entities/orderCourse';
 import { Table } from '@entities/table';
 import { AuthGuard } from '@guards/AuthGuard';
-import { Alert, AlertProps, Flex, Grid, Group, Loader, Modal, SegmentedControl, Text } from '@mantine/core';
+import { Alert, AlertProps, Flex, Grid, Group, Loader, Modal, ScrollArea, SegmentedControl, Text } from '@mantine/core';
 import { menuService } from '@services/menuService';
 import { orderService } from '@services/orderService';
 import { tableService } from '@services/tableService';
@@ -74,8 +74,9 @@ export function OrderPage() {
         // Retrieve Menu
         const menuData = await menuService.getMenu({ tableID: tableId });
         setMenu(menuData.item);
-        setCategories(menuData.item.categories);
-        setCurrentCategory(menuData.item.categories[0]);
+        const activeCategories = menuData.item.categories.filter((c) => c.active);
+        setCategories(activeCategories);
+        if (activeCategories.length > 0) setCurrentCategory(activeCategories[0]);
 
         try {
           const orderData = await orderService.getOrder({ id: tableId });
@@ -482,19 +483,16 @@ export function OrderPage() {
               </Grid.Col>
             )}
             <Grid.Col span={12}>
-              <SegmentedControl
-                size="lg"
-                fullWidth
-                value={currentCategory.id}
-                className={classes.segmentRoot}
-                onChange={(value) => setCurrentCategory(getCategoryById(menu, value))}
-                data={categories.map((c) => {
-                  return {
-                    label: c.titleDisplay,
-                    value: c.id,
-                  };
-                })}
-              />
+              <ScrollArea type="auto" styles={{ scrollbar: { display: 'none' } }}>
+                <SegmentedControl
+                  size="lg"
+                  value={currentCategory.id}
+                  className={classes.segmentRoot}
+                  style={{ width: 'max-content', minWidth: '100%' }}
+                  onChange={(value) => setCurrentCategory(getCategoryById(menu, value))}
+                  data={categories.map((c) => ({ label: c.titleDisplay, value: c.id }))}
+                />
+              </ScrollArea>
             </Grid.Col>
             <Grid.Col span={12}>
               <StackList>
