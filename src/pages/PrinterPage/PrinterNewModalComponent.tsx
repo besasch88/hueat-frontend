@@ -73,6 +73,7 @@ export function PrinterNewModalComponent({ isOpen, onClose, onCreated }: Printer
             placeholder={t('printerInsertTitle')}
             key={form.key('title')}
             {...form.getInputProps('title')}
+            onChange={(e) => form.setFieldValue('title', e.currentTarget.value.toUpperCase())}
             mt={'md'}
           />
           <TextInput

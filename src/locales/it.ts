@@ -53,8 +53,8 @@ export const itTranslations = {
   menuCategoryInsertTitle: 'Nome categoria',
   menuCategoryNewTitle: 'NUOVA CATEGORIA',
   menuCategoryEditTitle: 'MODIFICA CATEGORIA',
-  menuCategoryInsideLabel: 'Interno',
-  menuCategoryOutsideLabel: 'Asporto',
+  menuCategoryInsideLabel: 'INTERNO',
+  menuCategoryOutsideLabel: 'ASPORTO',
   menuCategoryDeleteTitle: 'ELIMINA CATEGORIA',
   menuCategoryDeleteConfirm:
     "Sei sicuro di voler eliminare questa categoria? Verranno eliminate anche tutte le voci di Menu e le loro Varianti. L'operazione è irreversibile.",
